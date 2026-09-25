@@ -336,6 +336,19 @@
   @media (max-width: 380px) { .proofs { grid-template-columns: 1fr; } }
 
   .proof { margin: 0; }
+  /* a lone frame on the last row sits centred, still one column wide */
+  .proofs .proof:last-child {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc((100% - 36px) / 3);
+  }
+  @media (max-width: 720px) {
+    .proofs .proof:last-child { width: calc((100% - 18px) / 2); }
+  }
+  @media (max-width: 380px) {
+    .proofs .proof:last-child { width: 100%; }
+  }
+
   /* The lineup is the one frame you are meant to stop at, so it gets the
      page rather than a sixth of a row, at its own full resolution. */
   .proof.wide {
@@ -629,7 +642,15 @@
     border: 1px solid var(--rule);
     border-radius: 14px;
   }
-  .court .shot:first-child { grid-column: 1 / -1; }
+  /* the odd one out goes below, centred and modest, rather than a banner */
+  .court .shot:last-child {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: min(100%, 62%);
+  }
+  @media (max-width: 460px) {
+    .court .shot:last-child { width: 100%; }
+  }
 
   /* ---------- full-width plates ---------- */
   .plates { display: grid; gap: 22px; justify-items: center; margin-top: 24px; }
