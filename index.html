@@ -587,9 +587,11 @@
 
   /* ---------- pictures set into the letter ---------- */
   .inset { margin: 4px 0 16px; width: 100%; }
-  .inset.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  @media (min-width: 620px) {
-    .inset.pair { width: 52%; max-width: 288px; }
+  .inset.after {
+    clear: both;
+    width: 100%;
+    max-width: 330px;
+    margin: 4px auto 20px;
   }
 
   .inset img {
@@ -1013,11 +1015,14 @@
 
     <p>You showed up, and it has been a joy ever since.</p>
 
-    <figure class="inset right pair">
+    <figure class="inset right">
       <img src="img/g6.jpg" alt="Sebastian soaked on the log flume, laughing, next to Herman" loading="lazy">
-      <img src="img/g5.jpg" alt="Sebastian and the family on the Nitro rollercoaster" loading="lazy">
     </figure>
     <p>I have been going through photographs this week &mdash; tens of thousands of them, scattered across drives and old phones and libraries nobody had opened in years. There is the log flume in 2017: you soaked straight through, next to Herman, both of you laughing. I love your expression in the photo. That was a good time. Sorry about the rollercoasters.</p>
+
+    <figure class="inset after">
+      <img src="img/g5.jpg" alt="Sebastian and the family on the Nitro rollercoaster" loading="lazy">
+    </figure>
 
     <figure class="inset left">
       <img src="img/g4.jpg" alt="Sebastian in a bucket hat with the giant stuffed animals won at the basketball booth" loading="lazy">
