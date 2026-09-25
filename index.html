@@ -610,6 +610,25 @@
   .letter::after { content: ""; display: block; clear: both; }
   .letter .close, .letter .sign { clear: both; }
 
+  /* ---------- a little bball ---------- */
+  .court {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-top: 24px;
+  }
+  @media (max-width: 460px) { .court { grid-template-columns: 1fr; } }
+  .shot { margin: 0; }
+  .shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: var(--frame-bg);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+  }
+  .court .shot:first-child { grid-column: 1 / -1; }
+
   /* ---------- full-width plates ---------- */
   .plates { display: grid; gap: 22px; justify-items: center; margin-top: 24px; }
   @media (min-width: 760px) {
@@ -626,6 +645,7 @@
     height: auto;
     background: var(--frame-bg);
     border: 1px solid var(--rule);
+    border-radius: 14px;
   }
 
   /* ---------- comic strip ---------- */
@@ -1012,7 +1032,7 @@
 
   <div class="sheet-head an">
     <h2>Contact sheet</h2>
-    <span class="note">Seven frames &middot; the long way round</span>
+    <span class="note">Four frames &middot; the long way round</span>
   </div>
   <div class="rule"></div>
 
@@ -1033,29 +1053,29 @@
       <div class="well"><img src="img/g3.jpg" alt="Sebastian hiking in saguaro cactus country in Arizona" loading="lazy"></div>
       <figcaption><b>04</b><span>Arizona &middot; saguaro country</span></figcaption>
     </figure>
-    <figure class="proof">
-      <div class="well"><img src="img/g7.jpg" alt="Sebastian laying the ball up at the rim beneath the championship banners" loading="lazy"></div>
-      <figcaption><b>05</b><span>NYMA &middot; at the rim</span></figcaption>
-    </figure>
-    <figure class="proof">
-      <div class="well"><img src="img/g8.jpg" alt="Sebastian on the floor during an NYMA game" loading="lazy"></div>
-      <figcaption><b>06</b><span>NYMA &middot; in the game</span></figcaption>
-    </figure>
-    <figure class="proof wide">
-      <div class="well"><img src="img/g9.jpg" alt="Broadcast graphic showing the Pratt starting lineup, with Roda at number zero" loading="lazy"></div>
-      <figcaption><b>07</b><span>Pratt &middot; starting five &middot; 0 Roda, G</span></figcaption>
-    </figure>
   </div>
 
   <div class="rule"></div>
   <div class="sheet-head">
-    <h2>Brooklyn, and after</h2>
-    <span class="note">The courts on the water &middot; then Pratt</span>
+    <h2>A little bball</h2>
+    <span class="note">NYMA &middot; Brooklyn &middot; Pratt</span>
+  </div>
+
+  <div class="court">
+    <figure class="shot">
+      <img src="img/g7.jpg" alt="Sebastian laying the ball up at the rim beneath the championship banners" loading="lazy">
+    </figure>
+    <figure class="shot">
+      <img src="img/g8.jpg" alt="Sebastian on the floor during an NYMA game" loading="lazy">
+    </figure>
+    <figure class="shot">
+      <img src="img/bk-court.png" alt="Sebastian on the Brooklyn Bridge Park court, ball under one arm, Manhattan behind him" loading="lazy">
+    </figure>
   </div>
 
   <div class="plates">
     <figure class="plate">
-      <img src="img/bk-court.png" alt="Sebastian on the Brooklyn Bridge Park court, ball under one arm, Manhattan behind him" loading="lazy">
+      <img src="img/g9.jpg" alt="Broadcast graphic showing the Pratt starting lineup, with Roda at number zero" loading="lazy">
     </figure>
     <figure class="plate">
       <img src="img/pratt.png" alt="Sebastian shooting under the NYMA New England Class D Champions 2018 banner, the Pratt Cannoneers mark, and the Pratt campus walk" loading="lazy">
