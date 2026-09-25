@@ -587,6 +587,11 @@
 
   /* ---------- pictures set into the letter ---------- */
   .inset { margin: 4px 0 16px; width: 100%; }
+  .inset.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  @media (min-width: 620px) {
+    .inset.pair { width: 52%; max-width: 288px; }
+  }
+
   .inset img {
     display: block;
     width: 100%;
@@ -988,8 +993,9 @@
 
     <p>You showed up, and it has been a joy ever since.</p>
 
-    <figure class="inset right">
+    <figure class="inset right pair">
       <img src="img/g6.jpg" alt="Sebastian soaked on the log flume, laughing, next to Herman" loading="lazy">
+      <img src="img/g5.jpg" alt="Sebastian and the family on the Nitro rollercoaster" loading="lazy">
     </figure>
     <p>I have been going through photographs this week &mdash; tens of thousands of them, scattered across drives and old phones and libraries nobody had opened in years. There is the log flume in 2017: you soaked straight through, next to Herman, both of you laughing. I love your expression in the photo. That was a good time. Sorry about the rollercoasters.</p>
 
@@ -1006,7 +1012,7 @@
 
   <div class="sheet-head an">
     <h2>Contact sheet</h2>
-    <span class="note">Eight frames &middot; the long way round</span>
+    <span class="note">Seven frames &middot; the long way round</span>
   </div>
   <div class="rule"></div>
 
@@ -1028,20 +1034,16 @@
       <figcaption><b>04</b><span>Arizona &middot; saguaro country</span></figcaption>
     </figure>
     <figure class="proof">
-      <div class="well"><img src="img/g5.jpg" alt="Sebastian and family on the Nitro rollercoaster" loading="lazy"></div>
-      <figcaption><b>05</b><span>Nitro &middot; 18 June 2017</span></figcaption>
-    </figure>
-    <figure class="proof">
       <div class="well"><img src="img/g7.jpg" alt="Sebastian laying the ball up at the rim beneath the championship banners" loading="lazy"></div>
-      <figcaption><b>06</b><span>NYMA &middot; at the rim</span></figcaption>
+      <figcaption><b>05</b><span>NYMA &middot; at the rim</span></figcaption>
     </figure>
     <figure class="proof">
       <div class="well"><img src="img/g8.jpg" alt="Sebastian on the floor during an NYMA game" loading="lazy"></div>
-      <figcaption><b>07</b><span>NYMA &middot; in the game</span></figcaption>
+      <figcaption><b>06</b><span>NYMA &middot; in the game</span></figcaption>
     </figure>
     <figure class="proof wide">
       <div class="well"><img src="img/g9.jpg" alt="Broadcast graphic showing the Pratt starting lineup, with Roda at number zero" loading="lazy"></div>
-      <figcaption><b>08</b><span>Pratt &middot; starting five &middot; 0 Roda, G</span></figcaption>
+      <figcaption><b>07</b><span>Pratt &middot; starting five &middot; 0 Roda, G</span></figcaption>
     </figure>
   </div>
 
