@@ -954,6 +954,9 @@
     gap: 4px;
     padding-top: 6px;
   }
+  /* `hidden` works by setting display:none, so any display of our own beats
+     it. Put it back, or the surprise is not a surprise. */
+  .gift-out[hidden] { display: none; }
   .gift-out.reveal { animation: swell 620ms cubic-bezier(.2,.7,.3,1) both; }
   .gift-amount {
     font-family: "Bodoni Moda", "Didot", Georgia, serif;
