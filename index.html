@@ -901,31 +901,14 @@
   }
   .box[aria-expanded="true"] .box-lid { transform: translate(-16px, -74px) rotate(-19deg); }
 
-  .cue { margin: 0 0 26px; text-align: center; }
-  .cue .cue-line {
+  .cue {
     font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
     font-size: 11px;
-    letter-spacing: 0.10em;
+    letter-spacing: 0.06em;
+    line-height: 1.7;
+    text-align: center;
     color: var(--muted);
-    margin: 0 0 10px;
-  }
-  .cue .player {
-    display: block;
-    width: 100%;
-    max-width: 420px;
-    margin: 0 auto;
-    height: 175px;
-    border: 0;
-    overflow: hidden;
-    background: transparent;
-    border-radius: 12px;
-  }
-  .cue .cue-alt {
-    font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
-    font-size: 10px;
-    letter-spacing: 0.08em;
-    color: var(--muted);
-    margin: 8px 0 0;
+    margin: 0 0 24px;
   }
   .cue a { color: var(--red); text-decoration: none; border-bottom: 1px solid currentColor; }
   .cue a:hover { opacity: 0.75; }
@@ -1015,16 +998,9 @@
     <em>years old today</em>
   </h1>
 
-  <div class="cue">
-    <p class="cue-line">Before you read &mdash; press play.</p>
-    <iframe class="player" title="Love Theme from Cousins on Apple Music"
-      allow="autoplay *; encrypted-media *;" frameborder="0" height="175" loading="lazy"
-      sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
-      src="https://embed.music.apple.com/us/album/love-theme-from-cousins/1646464219?i=1646465570"></iframe>
-    <p class="cue-alt"><a
-      href="https://music.apple.com/us/album/love-theme-from-cousins/1646464219?i=1646465570"
-      target="_blank" rel="noopener">Open it in Apple Music</a></p>
-  </div>
+  <p class="cue">The music is ours. If you want the one we meant, it is
+    <a href="https://music.apple.com/us/album/love-theme-from-cousins/1646464219?i=1646465570"
+    target="_blank" rel="noopener">Love Theme from Cousins</a>.</p>
 
   <figure class="hero an-hero">
     <div class="frame">
@@ -1294,125 +1270,171 @@
 
 <script>
   /* ------------------------------------------------------------------
-     An original passacaglia, performed by the page itself.
-     Harpsichord-ish plucks over a descending ground bass in D major.
-     Nothing is streamed or sampled: every note is synthesised here, so
-     the card works offline and owes nobody anything.
+     "Twenty-Three" — written for this card, played by the page itself.
+
+     Sixteen slow bars in F major: a held string pad, a piano taking the
+     melody, and a bass moving underneath. Nothing is streamed or sampled,
+     so it starts the instant he touches the page, owes nobody anything,
+     and still works with the wifi off.
      ------------------------------------------------------------------ */
   window.__cardMusic = (function () {
-    var BPM = 92;
-    var BEAT = 60 / BPM;
-    var EIGHTH = BEAT / 2;
-    var BAR = BEAT * 4;
+    var BPM   = 64;
+    var BEAT  = 60 / BPM;
+    var BAR   = BEAT * 4;
+    var LEVEL = 0.26;
 
-    /* Eight bars of ground. Bass roots, chord for the inner voice,
-       and a melody of eighth notes written over the top. */
-    var BASS   = [38, 37, 35, 33, 31, 30, 31, 33];
-    var CHORDS = [
-      [62, 66, 69], [61, 64, 69], [59, 62, 66], [57, 61, 66],
-      [59, 62, 67], [54, 57, 62], [55, 59, 62], [57, 61, 64]
+    /* chord under each bar, then the same eight again an idea brighter */
+    var EIGHT = [
+      [53, 57, 60, 64],   /* Fmaj7  */
+      [50, 53, 57, 60],   /* Dm7    */
+      [46, 50, 53, 57],   /* Bbmaj7 */
+      [48, 52, 55],       /* C      */
+      [45, 48, 52, 55],   /* Am7    */
+      [50, 53, 57, 60],   /* Dm7    */
+      [43, 46, 50, 53],   /* Gm7    */
+      [48, 52, 55, 58]    /* C7     */
     ];
+    var CHORDS = EIGHT.concat(EIGHT);
+    var ROOTS  = [41, 38, 34, 36, 33, 38, 31, 36];
+
+    /* the tune: [note, beat it starts on, how many beats it holds] */
     var MELODY = [
-      [74, 76, 78, 76, 74, 73, 74, 78],
-      [76, 74, 73, 71, 73, 74, 73, 69],
-      [78, 76, 74, 73, 74, 76, 74, 71],
-      [73, 74, 76, 74, 73, 71, 69, 73],
-      [71, 73, 74, 76, 78, 76, 74, 71],
-      [74, 73, 74, 76, 74, 73, 71, 69],
-      [71, 74, 78, 76, 74, 71, 74, 76],
-      [73, 76, 74, 73, 71, 69, 71, 73]
+      [[69,0,2],[72,2,2]], [[74,0,3],[72,3,1]], [[70,0,2],[74,2,2]], [[72,0,4]],
+      [[76,0,2],[72,2,2]], [[74,0,2],[69,2,2]], [[70,0,2],[67,2,2]], [[69,0,3]],
+      [[72,0,2],[77,2,2]], [[76,0,3],[74,3,1]], [[74,0,2],[77,2,2]], [[76,0,4]],
+      [[79,0,2],[76,2,2]], [[77,0,2],[74,2,2]], [[72,0,2],[70,2,2]], [[69,0,4]]
     ];
-    var ARP = [0, 1, 2, 1, 0, 1, 2, 1];
 
-    var LEVEL = 0.22;   /* master volume once it is up */
     var ctx = null, master = null, wet = null;
     var timer = null, nextBar = 0, bar = 0;
     var playing = false, ducked = false;
 
-    function hz(midi) { return 440 * Math.pow(2, (midi - 69) / 12); }
+    function hz(m) { return 440 * Math.pow(2, (m - 69) / 12); }
 
     function build() {
       var AC = window.AudioContext || window.webkitAudioContext;
       if (!AC) return false;
-      ctx = new AC();
+      try { ctx = new AC(); } catch (e) { return false; }
 
       master = ctx.createGain();
       master.gain.value = 0;
       master.connect(ctx.destination);
 
-      /* A short synthetic room, so the plucks are not bone dry. */
-      var len = Math.floor(ctx.sampleRate * 1.7);
+      /* a long warm room */
+      var len = Math.floor(ctx.sampleRate * 2.8);
       var buf = ctx.createBuffer(2, len, ctx.sampleRate);
       for (var c = 0; c < 2; c++) {
         var d = buf.getChannelData(c);
         for (var i = 0; i < len; i++) {
-          d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 2.6);
+          d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 2.2);
         }
       }
       var verb = ctx.createConvolver();
       verb.buffer = buf;
       wet = ctx.createGain();
-      wet.gain.value = 0.28;
+      wet.gain.value = 0.42;
       wet.connect(verb);
       verb.connect(master);
       return true;
     }
 
-    /* One plucked note: two slightly detuned saws through a falling filter. */
-    function pluck(midi, at, dur, level) {
+    /* piano: a struck triangle with a sine an octave up, decaying away */
+    function piano(midi, at, dur, level) {
       var f = hz(midi);
       var g = ctx.createGain();
-      var filt = ctx.createBiquadFilter();
-      filt.type = 'lowpass';
-      filt.frequency.setValueAtTime(Math.min(7000, f * 9), at);
-      filt.frequency.exponentialRampToValueAtTime(Math.max(320, f * 2.2), at + dur * 0.85);
-      filt.Q.value = 0.9;
+      var lp = ctx.createBiquadFilter();
+      lp.type = 'lowpass';
+      lp.frequency.setValueAtTime(Math.min(6200, f * 7), at);
+      lp.frequency.exponentialRampToValueAtTime(Math.max(300, f * 2), at + dur * 0.9);
 
-      for (var k = 0; k < 2; k++) {
-        var o = ctx.createOscillator();
-        o.type = k ? 'square' : 'sawtooth';
-        o.frequency.value = f;
-        o.detune.value = k ? 7 : -7;
-        var og = ctx.createGain();
-        og.gain.value = k ? 0.32 : 0.68;
-        o.connect(og);
-        og.connect(filt);
-        o.start(at);
-        o.stop(at + dur + 0.05);
-      }
+      var o = ctx.createOscillator();
+      o.type = 'triangle';
+      o.frequency.value = f;
+      o.connect(lp);
+      o.start(at); o.stop(at + dur + 0.1);
+
+      var h = ctx.createOscillator();
+      h.type = 'sine';
+      h.frequency.value = f * 2;
+      var hg = ctx.createGain();
+      hg.gain.value = 0.22;
+      h.connect(hg); hg.connect(lp);
+      h.start(at); h.stop(at + dur + 0.1);
 
       g.gain.setValueAtTime(0.0001, at);
-      g.gain.exponentialRampToValueAtTime(level, at + 0.006);
-      g.gain.exponentialRampToValueAtTime(level * 0.28, at + dur * 0.35);
+      g.gain.exponentialRampToValueAtTime(level, at + 0.012);
+      g.gain.exponentialRampToValueAtTime(level * 0.30, at + dur * 0.45);
       g.gain.exponentialRampToValueAtTime(0.0001, at + dur);
-
-      filt.connect(g);
+      lp.connect(g);
       g.connect(master);
       g.connect(wet);
     }
 
+    /* strings: detuned saws, slow in, slow out, kept dark */
+    function strings(notes, at, dur, level) {
+      var g = ctx.createGain();
+      var lp = ctx.createBiquadFilter();
+      lp.type = 'lowpass';
+      lp.frequency.value = 1650;
+      lp.Q.value = 0.6;
+
+      for (var i = 0; i < notes.length; i++) {
+        for (var k = 0; k < 2; k++) {
+          var o = ctx.createOscillator();
+          o.type = 'sawtooth';
+          o.frequency.value = hz(notes[i]);
+          o.detune.value = k ? 6 : -6;
+          var og = ctx.createGain();
+          og.gain.value = 0.16;
+          o.connect(og); og.connect(lp);
+          o.start(at); o.stop(at + dur + 0.2);
+        }
+      }
+      g.gain.setValueAtTime(0.0001, at);
+      g.gain.linearRampToValueAtTime(level, at + dur * 0.32);
+      g.gain.setValueAtTime(level, at + dur * 0.66);
+      g.gain.linearRampToValueAtTime(0.0001, at + dur);
+      lp.connect(g);
+      g.connect(master);
+      g.connect(wet);
+    }
+
+    function bassNote(midi, at, dur, level) {
+      var g = ctx.createGain();
+      var o = ctx.createOscillator();
+      o.type = 'sine';
+      o.frequency.value = hz(midi);
+      o.connect(g);
+      o.start(at); o.stop(at + dur + 0.1);
+      g.gain.setValueAtTime(0.0001, at);
+      g.gain.exponentialRampToValueAtTime(level, at + 0.05);
+      g.gain.exponentialRampToValueAtTime(level * 0.5, at + dur * 0.6);
+      g.gain.exponentialRampToValueAtTime(0.0001, at + dur);
+      g.connect(master);
+    }
+
     function scheduleBar(n, at) {
-      var i = n % 8;
-      var root = BASS[i], chord = CHORDS[i], tune = MELODY[i];
+      var i = n % 16;
+      var chord = CHORDS[i];
+      var root  = ROOTS[i % 8];
 
-      /* Ground bass: root, fifth above, root, and a step toward the next bar. */
-      pluck(root, at, BEAT * 1.6, 0.30);
-      pluck(root + 7, at + BEAT, BEAT * 0.8, 0.17);
-      pluck(root, at + BEAT * 2, BEAT * 1.2, 0.26);
-      pluck(BASS[(i + 1) % 8] + 12, at + BEAT * 3, BEAT * 0.7, 0.13);
+      strings(chord, at, BAR, 0.09);
+      bassNote(root, at, BAR * 0.92, 0.20);
 
-      for (var e = 0; e < 8; e++) {
-        var t = at + e * EIGHTH;
-        pluck(chord[ARP[e]], t, EIGHTH * 1.7, 0.10);          /* inner voice  */
-        pluck(tune[e], t, EIGHTH * (e % 2 ? 1.5 : 1.9), 0.20); /* melody       */
+      /* the chord turning over quietly under the tune */
+      for (var b = 0; b < 4; b++) {
+        piano(chord[b % chord.length] + 12, at + b * BEAT, BEAT * 1.3, 0.045);
+      }
+
+      var line = MELODY[i];
+      for (var m = 0; m < line.length; m++) {
+        piano(line[m][0], at + line[m][1] * BEAT, line[m][2] * BEAT * 0.98, 0.20);
       }
     }
 
-    /* Look ahead a bar at a time; a timer this coarse never audibly drifts
-       because every note is stamped against ctx.currentTime. */
     function tick() {
-      while (nextBar < ctx.currentTime + 1.2) {
-        if (nextBar < ctx.currentTime) nextBar = ctx.currentTime + 0.06;
+      while (nextBar < ctx.currentTime + 2.0) {
+        if (nextBar < ctx.currentTime) nextBar = ctx.currentTime + 0.08;
         scheduleBar(bar, nextBar);
         nextBar += BAR;
         bar++;
@@ -1428,21 +1450,14 @@
 
     function start() {
       if (!ctx && !build()) return;
-      /* Always try to wake the context, even when we already believe we are
-         playing: an earlier attempt may have been refused for want of a real
-         interaction, and this call may be the one the browser allows. */
       if (ctx.state === 'suspended') ctx.resume();
-      if (playing) {
-        fade(ducked ? 0.0001 : LEVEL, 1.2);
-        announce();
-        return;
-      }
+      if (playing) { fade(ducked ? 0.0001 : LEVEL, 1.2); announce(); return; }
       playing = true;
       bar = 0;
-      nextBar = ctx.currentTime + 0.12;
+      nextBar = ctx.currentTime + 0.15;
       tick();
-      timer = setInterval(tick, 320);
-      fade(ducked ? 0.0001 : LEVEL, 2.2);
+      timer = setInterval(tick, 420);
+      fade(ducked ? 0.0001 : LEVEL, 3.0);
       announce();
     }
 
@@ -1451,8 +1466,8 @@
       playing = false;
       clearInterval(timer);
       timer = null;
-      fade(0.0001, 0.7);
-      setTimeout(function () { if (!playing && ctx) ctx.suspend(); }, 900);
+      fade(0.0001, 1.2);
+      setTimeout(function () { if (!playing && ctx) ctx.suspend(); }, 1400);
       announce();
     }
 
@@ -1461,31 +1476,52 @@
       if (!btn) btn = document.getElementById('music');
       if (!btn) return;
       btn.setAttribute('aria-pressed', playing ? 'true' : 'false');
-      btn.setAttribute('aria-label', playing ? 'Stop music' : 'Play music');
+      btn.setAttribute('aria-label', playing ? 'Stop the music' : 'Play the music');
     }
 
     return {
       toggle: function () { playing ? stop() : start(); },
       start: start,
       isPlaying: function () { return playing; },
-      /* Did the browser actually let us make a sound? */
       running: function () { return !!ctx && ctx.state === 'running'; },
-      /* Stand aside while the clip is talking. */
-      duck: function () { ducked = true; if (playing) fade(0.0001, 0.35); },
-      unduck: function () { ducked = false; if (playing) fade(LEVEL, 1.2); }
+      duck:   function () { ducked = true;  if (playing) fade(0.0001, 0.5); },
+      unduck: function () { ducked = false; if (playing) fade(LEVEL, 1.5); }
     };
   })();
 
   (function () {
     var m = window.__cardMusic;
     var btn = document.getElementById('music');
-    if (!m || !btn) return;
+    if (!m) return;
 
-    /* The page never starts its own music. The theme song is the point; this
-       is only here if he goes looking for it. */
-    btn.addEventListener('click', function () { m.toggle(); });
+    if (btn) {
+      btn.addEventListener('click', function () {
+        started = true;
+        release();
+        m.toggle();
+      });
+    }
 
+    /* As close to "on open" as a browser allows: the first touch, scroll or
+       key starts it. On a phone a swipe ends in a touchend, which counts, so
+       it comes up as he scrolls. Each try is checked, and if the browser
+       quietly refused we stay armed and try the next one. */
+    var started = false;
+    var EVENTS = ['scroll', 'touchend', 'pointerup', 'keydown'];
 
+    function release() {
+      EVENTS.forEach(function (e) { window.removeEventListener(e, attempt, true); });
+    }
+    function attempt() {
+      if (started) return;
+      m.start();
+      setTimeout(function () {
+        if (m.running()) { started = true; release(); }
+      }, 160);
+    }
+    EVENTS.forEach(function (e) {
+      window.addEventListener(e, attempt, { capture: true, passive: true });
+    });
   })();
 </script>
 
