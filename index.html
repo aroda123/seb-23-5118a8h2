@@ -29,6 +29,8 @@
     --rule:       #CFC9BE;
     --muted:      #6E6A63;
     --red:        #C8251C;
+    --orange:     #D2751C;
+    --blue:       #12599E;
     --frame-bg:   #DEDBD3;
   }
   @media (prefers-color-scheme: dark) {
@@ -41,6 +43,8 @@
       --rule:       #34302B;
       --muted:      #8C867D;
       --red:        #E24B3F;
+    --orange:     #F0954A;
+    --blue:       #6AA9E8;
       --frame-bg:   #1F1D1A;
     }
   }
@@ -53,6 +57,8 @@
     --rule:       #34302B;
     --muted:      #8C867D;
     --red:        #E24B3F;
+    --orange:     #F0954A;
+    --blue:       #6AA9E8;
     --frame-bg:   #1F1D1A;
   }
 
@@ -102,6 +108,7 @@
     font-family: "Fraunces", "Bodoni Moda", Georgia, serif;
     font-optical-sizing: auto;
     font-weight: 700;
+    color: var(--blue);
     font-size: clamp(2.5rem, 11vw, 7rem);
     line-height: 0.95;
     letter-spacing: -0.005em;
@@ -109,9 +116,13 @@
     text-wrap: balance;
   }
   .masthead .age {
-    color: var(--red);
+    display: block;
+    color: var(--orange);
     font-weight: 800;
-    letter-spacing: -0.03em;
+    font-size: 0.86em;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    margin-top: 2px;
   }
   .masthead em {
     font-style: italic;
