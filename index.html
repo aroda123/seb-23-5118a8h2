@@ -764,39 +764,46 @@
     box-shadow: 0 2px 14px rgba(0, 0, 0, 0.10);
     transition: opacity 0.25s ease, box-shadow 0.2s ease;
   }
-  .tapcue {
+  /* ---------- the box you open to get in ---------- */
+  .gate {
     position: fixed;
-    left: 50%;
-    bottom: 22px;
-    transform: translateX(-50%);
-    z-index: 60;
-    display: inline-flex;
-    align-items: center;
-    gap: 9px;
-    padding: 11px 18px;
-    border-radius: 999px;
-    border: 1px solid var(--orange);
-    background: var(--paper-lift);
-    color: var(--ink);
+    inset: 0;
+    z-index: 200;
+    display: grid;
+    place-items: center;
+    background: var(--paper);
+    transition: opacity 0.65s ease;
+  }
+  .gate.opening { opacity: 0; pointer-events: none; }
+  .gate.gone { display: none; }
+  .gate-box {
+    display: grid;
+    justify-items: center;
+    gap: 20px;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    font: inherit;
+  }
+  .giftsvg { width: min(64vw, 300px); height: auto; overflow: visible; }
+  .g-lid, .g-body {
+    transition: transform 0.8s cubic-bezier(.2,.8,.3,1), opacity 0.6s ease;
+  }
+  .g-lid { transform-origin: 50% 85%; }
+  .gate.opening .g-lid  { transform: translate(-18px, -190px) rotate(-17deg); }
+  .gate.opening .g-body { transform: translateY(10px); opacity: 0.9; }
+  .gate-word {
     font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
     font-size: 11px;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.24em;
     text-transform: uppercase;
-    box-shadow: 0 3px 18px rgba(0, 0, 0, 0.16);
-    animation: tapcue 2.6s ease-in-out infinite;
-    cursor: pointer;
+    color: var(--muted);
   }
-  .tapcue span {
-    display: inline-flex; align-items: center; justify-content: center;
-    width: 20px; height: 20px; border-radius: 50%;
-    background: var(--orange); color: #fff; font-size: 9px;
+  .gate-box:hover .gate-word { color: var(--orange); }
+  @media (prefers-reduced-motion: reduce) {
+    .g-lid, .g-body { transition: none; }
   }
-  @keyframes tapcue {
-    0%, 100% { box-shadow: 0 3px 18px rgba(0,0,0,0.16); }
-    50%      { box-shadow: 0 3px 18px rgba(0,0,0,0.16), 0 0 0 7px rgba(210,117,28,0.16); }
-  }
-  .tapcue.gone { display: none; }
-  @media (prefers-reduced-motion: reduce) { .tapcue { animation: none; } }
 
   /* until something has started it, the button quietly asks */
   .music.waiting {
@@ -1307,9 +1314,25 @@
 
 </div>
 
-<button class="tapcue" id="tapcue" type="button">
-  <span aria-hidden="true">&#9654;</span> Tap anywhere for music
-</button>
+<div class="gate" id="gate">
+  <button class="gate-box" id="gatebox" type="button" aria-label="Open the card">
+    <svg class="giftsvg" viewBox="0 0 320 300" role="img" aria-hidden="true">
+      <ellipse cx="160" cy="268" rx="104" ry="13" fill="rgba(0,0,0,0.10)"/>
+      <g class="g-body">
+        <rect x="52" y="120" width="216" height="140" rx="8" fill="#C8251C"/>
+        <rect x="146" y="120" width="28" height="140" fill="#F5F1E8"/>
+      </g>
+      <g class="g-lid">
+        <rect x="36" y="86" width="248" height="46" rx="8" fill="#A81E16"/>
+        <rect x="36" y="100" width="248" height="16" fill="#F5F1E8"/>
+        <ellipse cx="134" cy="62" rx="42" ry="24" transform="rotate(-24 134 62)" fill="#F5F1E8"/>
+        <ellipse cx="186" cy="62" rx="42" ry="24" transform="rotate(24 186 62)" fill="#F5F1E8"/>
+        <circle cx="160" cy="78" r="14" fill="#FFFFFF"/>
+      </g>
+    </svg>
+    <span class="gate-word">Open it</span>
+  </button>
+</div>
 
 <button class="music" id="music" type="button" aria-pressed="false" aria-label="Play music">
   <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
@@ -1497,8 +1520,6 @@
     function release() {
       EVENTS.forEach(function (e) { window.removeEventListener(e, attempt, true); });
     }
-    var cue = document.getElementById('tapcue');
-    if (cue) cue.addEventListener('click', function () { attempt(); });
 
     function attempt() {
       if (started) return;
@@ -1508,7 +1529,6 @@
           started = true;
           release();
           if (btn) btn.classList.remove('waiting');
-          if (cue) cue.classList.add('gone');
         }
       }, 200);
     }
@@ -1642,6 +1662,33 @@
         tag.textContent = 'Happy birthday';
         surprise();
       }
+    });
+  })();
+</script>
+
+<script>
+  /* The card stays shut until it is opened. That one press is also what lets
+     the music start — browsers will not make a sound before it. */
+  (function () {
+    var gate = document.getElementById('gate');
+    var box  = document.getElementById('gatebox');
+    if (!gate) return;
+    var root = document.documentElement;
+    root.style.overflow = 'hidden';
+
+    function open() {
+      if (gate.classList.contains('opening')) return;
+      if (window.__cardMusic) window.__cardMusic.start();
+      gate.classList.add('opening');
+      setTimeout(function () {
+        gate.classList.add('gone');
+        root.style.overflow = '';
+      }, 760);
+    }
+    if (box) box.addEventListener('click', open);
+    gate.addEventListener('click', open);
+    gate.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') open();
     });
   })();
 </script>
