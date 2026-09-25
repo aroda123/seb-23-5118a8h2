@@ -902,34 +902,33 @@
   .box[aria-expanded="true"] .box-lid { transform: translate(-16px, -74px) rotate(-19deg); }
 
   .cue { margin: 0 0 26px; text-align: center; }
-  .playbtn {
-    display: inline-flex;
-    align-items: center;
-    gap: 11px;
-    text-decoration: none;
-    padding: 9px 20px 9px 9px;
-    border: 1px solid var(--rule);
-    background: var(--paper-lift);
-    color: var(--ink);
-    border-radius: 999px;
+  .cue .cue-line {
     font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
     font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    transition: box-shadow 0.18s ease, transform 0.18s ease;
+    letter-spacing: 0.10em;
+    color: var(--muted);
+    margin: 0 0 10px;
   }
-  .playbtn:hover { box-shadow: 0 3px 14px rgba(0, 0, 0, 0.15); transform: translateY(-1px); }
-  .playbtn-ico {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 30px;
-    height: 30px;
-    flex: 0 0 30px;
-    border-radius: 50%;
-    background: var(--red);
+  .cue .player {
+    display: block;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    height: 175px;
+    border: 0;
+    overflow: hidden;
+    background: transparent;
+    border-radius: 12px;
   }
-  .playbtn-ico svg { width: 15px; height: 15px; fill: #FFF; margin-left: 2px; }
+  .cue .cue-alt {
+    font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin: 8px 0 0;
+  }
+  .cue a { color: var(--red); text-decoration: none; border-bottom: 1px solid currentColor; }
+  .cue a:hover { opacity: 0.75; }
 
   .theme {
     font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
@@ -1014,14 +1013,14 @@
   </h1>
 
   <div class="cue">
-    <a class="playbtn"
-       href="https://music.apple.com/us/album/love-theme-from-cousins/1646464219?i=1646465570"
-       target="_blank" rel="noopener">
-      <span class="playbtn-ico" aria-hidden="true">
-        <svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg>
-      </span>
-      Play the theme
-    </a>
+    <p class="cue-line">Before you read &mdash; press play.</p>
+    <iframe class="player" title="Love Theme from Cousins on Apple Music"
+      allow="autoplay *; encrypted-media *;" frameborder="0" height="175" loading="lazy"
+      sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+      src="https://embed.music.apple.com/us/album/love-theme-from-cousins/1646464219?i=1646465570"></iframe>
+    <p class="cue-alt"><a
+      href="https://music.apple.com/us/album/love-theme-from-cousins/1646464219?i=1646465570"
+      target="_blank" rel="noopener">Open it in Apple Music</a></p>
   </div>
 
   <figure class="hero an-hero">
