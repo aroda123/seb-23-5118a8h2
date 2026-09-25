@@ -1387,15 +1387,43 @@
       master.gain.setValueAtTime(LOUD,now+HOLD);
       master.gain.linearRampToValueAtTime(LIGHT,now+HOLD+SETTLE);
     }
-    function start(){if(!ctx&&!build())return;if(ctx.state==='suspended')ctx.resume();
-      if(playing){if(!ducked)arc();announce();return;}
-      playing=true;bar=0;nextBar=ctx.currentTime+0.1;tick();timer=setInterval(tick,300);
-      if(!ducked)arc();announce();}
+    /* iPhones will not make a sound until one has actually been started
+       inside the gesture itself. A single silent sample does it. */
+    function unlock(){
+      try{
+        var b=ctx.createBuffer(1,1,22050), sN=ctx.createBufferSource();
+        sN.buffer=b; sN.connect(ctx.destination); sN.start(0);
+      }catch(e){}
+    }
+    function begin(){
+      if(playing){ if(!ducked)arc(); announce(); return; }
+      playing=true; bar=0; nextBar=ctx.currentTime+0.1;
+      tick(); timer=setInterval(tick,300);
+      if(!ducked)arc();
+      announce();
+    }
+    function start(){
+      if(!ctx&&!build())return;
+      unlock();
+      /* only start laying notes down once the context is really awake,
+         or they get scheduled against a clock that is not moving */
+      if(ctx.state==='suspended'){
+        var pr=ctx.resume();
+        if(pr&&pr.then){ pr.then(begin)['catch'](function(){}); } else { begin(); }
+      } else { begin(); }
+    }
     function stop(){if(!playing)return;playing=false;clearInterval(timer);timer=null;
       fade(0.0001,0.8);setTimeout(function(){if(!playing&&ctx)ctx.suspend();},1000);announce();}
     var btn=null;
-    function announce(){if(!btn)btn=document.getElementById('music');if(!btn)return;
-      btn.setAttribute('aria-pressed',playing?'true':'false');}
+    function announce(){
+      if(!btn)btn=document.getElementById('music');
+      if(!btn)return;
+      /* say "playing" only when sound is genuinely coming out */
+      var live = playing && !!ctx && ctx.state==='running';
+      btn.setAttribute('aria-pressed', live?'true':'false');
+      btn.setAttribute('aria-label', live?'Stop the music':'Play the music');
+      if(live) btn.classList.remove('waiting');
+    }
     return {toggle:function(){playing?stop():start();},start:start,
       isPlaying:function(){return playing;},
       running:function(){return !!ctx&&ctx.state==='running';},
