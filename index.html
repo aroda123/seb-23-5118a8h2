@@ -564,6 +564,32 @@
   .clip .sound .state-off { display: inline-flex; align-items: center; gap: 7px; }
   .clip video[controls] ~ .sound { display: none; }
 
+  /* ---------- pictures set into the letter ---------- */
+  .inset { margin: 4px 0 16px; width: 100%; }
+  .inset img {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: var(--frame-bg);
+    border: 1px solid var(--rule);
+  }
+  .inset figcaption {
+    font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    font-size: 10px;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 7px;
+  }
+  @media (min-width: 620px) {
+    .inset { width: 44%; max-width: 232px; }
+    .inset.right { float: right; margin: 5px 0 16px 24px; }
+    .inset.left  { float: left;  margin: 5px 24px 16px 0; text-align: right; }
+  }
+  /* keep the signature clear of the floats */
+  .letter::after { content: ""; display: block; clear: both; }
+  .letter .close, .letter .sign { clear: both; }
+
   /* ---------- comic strip ---------- */
   .strip { display: grid; gap: 14px; justify-items: center; margin-top: 24px; }
   @media (min-width: 720px) {
@@ -793,33 +819,71 @@
 
   .cue {
     margin: 0 0 28px;
-    padding: 16px 14px 12px;
+    padding: 16px 14px 14px;
     border: 1px solid var(--rule);
     background: var(--paper-lift);
     text-align: center;
   }
-  .cue .cue-line, .cue .cue-alt {
+  .cue .cue-line {
     font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
     font-size: 11px;
     letter-spacing: 0.10em;
     line-height: 1.6;
     color: var(--muted);
-    margin: 0;
+    margin: 0 0 12px;
   }
-  .cue .cue-alt { margin-top: 8px; font-size: 10px; }
+  /* A real play button, so there is one even where the embed cannot load. */
+  .playbtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 13px;
+    text-align: left;
+    text-decoration: none;
+    padding: 11px 18px 11px 13px;
+    border: 1px solid var(--rule);
+    background: var(--paper);
+    color: var(--ink);
+    border-radius: 999px;
+    transition: box-shadow 0.18s ease, transform 0.18s ease;
+  }
+  .playbtn:hover { box-shadow: 0 3px 16px rgba(0, 0, 0, 0.16); transform: translateY(-1px); }
+  .playbtn-ico {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+    border-radius: 50%;
+    background: var(--red);
+  }
+  .playbtn-ico svg { width: 17px; height: 17px; fill: #FFF; margin-left: 2px; }
+  .playbtn-txt { display: grid; gap: 2px; }
+  .playbtn-txt b {
+    font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .playbtn-txt i {
+    font-style: normal;
+    font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+  }
   .cue .player {
     display: block;
     width: 100%;
     max-width: 480px;
-    margin: 12px auto 0;
+    margin: 14px auto 0;
     height: 175px;
     overflow: hidden;
     border: 0;
     background: transparent;
     border-radius: 10px;
   }
-  .cue a { color: var(--red); text-decoration: none; border-bottom: 1px solid currentColor; }
-  .cue a:hover { opacity: 0.75; }
 
   .theme {
     font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
@@ -915,13 +979,23 @@
 
   <div class="cue">
     <p class="cue-line">Before you read &mdash; press play.</p>
+
+    <a class="playbtn"
+       href="https://music.apple.com/us/album/love-theme-from-cousins/1646464219?i=1646465570"
+       target="_blank" rel="noopener">
+      <span class="playbtn-ico" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg>
+      </span>
+      <span class="playbtn-txt">
+        <b>Love Theme from Cousins</b>
+        <i>Play it, then come back</i>
+      </span>
+    </a>
+
     <iframe class="player" title="Love Theme from Cousins on Apple Music"
       allow="autoplay *; encrypted-media *;" frameborder="0" height="175" loading="lazy"
       sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
       src="https://embed.music.apple.com/us/album/love-theme-from-cousins/1646464219?i=1646465570"></iframe>
-    <p class="cue-alt">Not playing? <a
-      href="https://music.apple.com/us/album/love-theme-from-cousins/1646464219?i=1646465570"
-      target="_blank" rel="noopener">Open it in Apple Music</a>.</p>
   </div>
 
   <section class="letter an an-3">
@@ -929,8 +1003,16 @@
 
     <p>You showed up, and it has been a joy ever since.</p>
 
+    <figure class="inset right">
+      <img src="img/g6.jpg" alt="Sebastian soaked on the log flume, laughing, next to Herman" loading="lazy">
+      <figcaption>Log flume &middot; 2017</figcaption>
+    </figure>
     <p>I have been going through photographs this week &mdash; tens of thousands of them, scattered across drives and old phones and libraries nobody had opened in years. There is the log flume in 2017: you soaked straight through, next to Herman, both of you laughing. I love your expression in the photo. That was a good time. Sorry about the rollercoasters.</p>
 
+    <figure class="inset left">
+      <img src="img/g4.jpg" alt="Sebastian in a bucket hat with the giant stuffed animals won at the basketball booth" loading="lazy">
+      <figcaption>The shelf, cleared</figcaption>
+    </figure>
     <p>And the basketball booth on the midway at Great Adventure, you cleared the shelf. You walked away with the camel, the lion and whatever else would fit under an arm, and the man running the stand finally told me to get you out of there &mdash; you were costing him too much money.</p>
 
     <p>Everyone warns you that they grow up. Nobody mentions that if you are lucky, they turn into your favorite person and most treasured thing in the world.</p>
