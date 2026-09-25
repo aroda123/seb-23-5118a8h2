@@ -603,7 +603,7 @@
   .inset.after {
     clear: both;
     width: 100%;
-    max-width: 330px;
+    max-width: 246px;
     margin: 4px auto 20px;
   }
 
@@ -611,15 +611,18 @@
     display: block;
     width: 100%;
     height: auto;
+    /* three photographs of three different shapes, shown as one shape */
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: center;
     background: var(--frame-bg);
     border: 1px solid var(--rule);
-    /* softened corners so the prose wraps around them more kindly */
     border-radius: 14px;
   }
   @media (min-width: 620px) {
-    .inset { width: 44%; max-width: 232px; }
+    .inset { width: 44%; max-width: 246px; }
     .inset.right { float: right; margin: 5px 0 16px 24px; }
-    .inset.left  { float: left;  margin: 5px 24px 16px 0; text-align: right; }
+    .inset.left  { float: left;  margin: 5px 24px 16px 0; }
   }
   /* keep the signature clear of the floats */
   .letter::after { content: ""; display: block; clear: both; }
@@ -1057,8 +1060,8 @@
   </section>
 
   <div class="sheet-head an">
-    <h2>Contact sheet</h2>
-    <span class="note">Four frames &middot; the long way round</span>
+    <h2>Memories</h2>
+    <span class="note">The long way round</span>
   </div>
   <div class="rule"></div>
 
