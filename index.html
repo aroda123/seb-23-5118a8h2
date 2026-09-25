@@ -1,0 +1,1420 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sebastian at Twenty-Three">
+<meta property="og:title" content="Sebastian at Twenty-Three">
+<meta property="og:description" content="A card from Mom and Dad. Photographs, three televisions, and one sealed thing.">
+<meta property="og:image" content="https://aroda123.github.io/seb-23-5118a8h2/img/hero.jpg">
+<meta property="og:image:width" content="401">
+<meta property="og:image:height" content="600">
+<meta property="og:url" content="https://aroda123.github.io/seb-23-5118a8h2/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sebastian at Twenty-Three">
+<meta name="twitter:description" content="A card from Mom and Dad.">
+<meta name="twitter:image" content="https://aroda123.github.io/seb-23-5118a8h2/img/hero.jpg">
+<title>Sebastian at Twenty-Three</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..700&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --ink:        #14120F;
+    --ink-soft:   #3A3630;
+    --paper:      #E8E6E0;
+    --paper-lift: #F2F0EB;
+    --rule:       #CFC9BE;
+    --muted:      #6E6A63;
+    --red:        #C8251C;
+    --frame-bg:   #DEDBD3;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --ink:        #EDEAE3;
+      --ink-soft:   #BFB9AF;
+      --paper:      #121110;
+      --paper-lift: #1B1917;
+      --rule:       #34302B;
+      --muted:      #8C867D;
+      --red:        #E24B3F;
+      --frame-bg:   #1F1D1A;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --ink:        #EDEAE3;
+    --ink-soft:   #BFB9AF;
+    --paper:      #121110;
+    --paper-lift: #1B1917;
+    --rule:       #34302B;
+    --muted:      #8C867D;
+    --red:        #E24B3F;
+    --frame-bg:   #1F1D1A;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .sheet {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding-inline: 20px;
+    padding-block: 28px 64px;
+  }
+
+  /* ---------- masthead ---------- */
+  .colophon {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+    align-items: baseline;
+    justify-content: space-between;
+    font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .colophon .mark { color: var(--red); }
+
+  .rule {
+    height: 1px;
+    background: var(--rule);
+    margin-block: 14px;
+  }
+  .rule.heavy { height: 3px; background: var(--ink); margin-block: 10px 0; }
+
+  .masthead {
+    font-family: "Bodoni Moda", "Didot", Georgia, serif;
+    font-weight: 700;
+    font-size: clamp(2.6rem, 11.5vw, 7.4rem);
+    line-height: 0.88;
+    letter-spacing: -0.02em;
+    margin: 18px 0 6px;
+    text-wrap: balance;
+  }
+  .masthead em {
+    font-style: italic;
+    font-weight: 400;
+    display: block;
+    font-size: 0.42em;
+    letter-spacing: 0.01em;
+    color: var(--ink-soft);
+    margin-top: 10px;
+  }
+
+  /* ---------- hero ---------- */
+  .hero {
+    position: relative;
+    display: grid;
+    justify-items: center;
+    margin: 34px 0 0;
+    overflow: hidden;
+    background: none;
+  }
+  /* Gilded wooden frame: a gilt moulding lit from the top left, mitred at the
+     four corners, a carved groove, a gold fillet and a cream mat. */
+  .frame {
+    --m: clamp(15px, 3.6vw, 27px);   /* width of the moulding */
+    --g: clamp(9px, 2.2vw, 16px);    /* where the groove is cut into it */
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 528px;
+    padding: var(--m);
+    background:
+      /* mitre joints: a hairline from each outer corner to its inner corner */
+      linear-gradient(45deg, transparent calc(50% - 0.7px), rgba(74,50,13,0.55) calc(50% - 0.7px),
+        rgba(74,50,13,0.55) calc(50% + 0.7px), transparent calc(50% + 0.7px))
+        left top / var(--m) var(--m) no-repeat,
+      linear-gradient(135deg, transparent calc(50% - 0.7px), rgba(74,50,13,0.55) calc(50% - 0.7px),
+        rgba(74,50,13,0.55) calc(50% + 0.7px), transparent calc(50% + 0.7px))
+        right top / var(--m) var(--m) no-repeat,
+      linear-gradient(45deg, transparent calc(50% - 0.7px), rgba(74,50,13,0.55) calc(50% - 0.7px),
+        rgba(74,50,13,0.55) calc(50% + 0.7px), transparent calc(50% + 0.7px))
+        right bottom / var(--m) var(--m) no-repeat,
+      linear-gradient(135deg, transparent calc(50% - 0.7px), rgba(74,50,13,0.55) calc(50% - 0.7px),
+        rgba(74,50,13,0.55) calc(50% + 0.7px), transparent calc(50% + 0.7px))
+        left bottom / var(--m) var(--m) no-repeat,
+      /* grain in the gilding */
+      repeating-linear-gradient(101deg,
+        rgba(255,252,236,0.05) 0 1px,
+        rgba(58,38,8,0.045) 1px 2px,
+        rgba(0,0,0,0) 2px 4px),
+      /* gold leaf over wood, light falling from the top left */
+      linear-gradient(142deg,
+        #f4e3b0 0%,
+        #ddb75f 14%,
+        #bb8f37 30%,
+        #956b21 47%,
+        #b9893a 62%,
+        #d7ae54 78%,
+        #8a6220 100%);
+    box-shadow:
+      /* outer arris: a thin catch-light, a thin dark edge */
+      inset 0 1px 0 rgba(255,250,224,0.75),
+      inset 1px 0 0 rgba(255,250,224,0.45),
+      inset -1px 0 0 rgba(66,44,12,0.52),
+      inset 0 -1px 0 rgba(66,44,12,0.64),
+      /* roundover of the moulding, lit from the top left */
+      inset 0 5px 8px -4px rgba(255,248,214,0.68),
+      inset 5px 0 8px -4px rgba(255,248,214,0.42),
+      inset -5px 0 9px -4px rgba(62,41,10,0.46),
+      inset 0 -6px 10px -4px rgba(62,41,10,0.62),
+      /* the frame sitting on the paper */
+      0 2px 3px rgba(0,0,0,0.20),
+      0 26px 54px rgba(0,0,0,0.30);
+  }
+  /* the groove cut round the moulding */
+  .frame::after {
+    content: "";
+    position: absolute;
+    inset: var(--g);
+    pointer-events: none;
+    border-top: 1px solid rgba(70,47,12,0.58);
+    border-left: 1px solid rgba(70,47,12,0.48);
+    border-right: 1px solid rgba(255,248,214,0.42);
+    border-bottom: 1px solid rgba(255,248,214,0.55);
+  }
+  .frame-mat {
+    position: relative;
+    padding: clamp(6px, 1.5vw, 11px);
+    background: linear-gradient(158deg, #fbf7ec 0%, #eee7d6 100%);
+    box-shadow:
+      /* gold fillet round the mat, then the mat's own bevel */
+      0 0 0 1px rgba(122,90,32,0.66),
+      inset 0 1px 3px rgba(74,56,24,0.18);
+  }
+  .hero img {
+    display: block;
+    width: 100%;
+    height: auto;
+    box-shadow: 0 1px 5px rgba(28,20,6,0.42);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .frame-mat {
+      background: linear-gradient(158deg, #efe8d6 0%, #ded5bf 100%);
+    }
+  }
+  :root[data-theme="dark"] .frame-mat {
+    background: linear-gradient(158deg, #efe8d6 0%, #ded5bf 100%);
+  }
+  .numeral {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: "Bodoni Moda", "Didot", Georgia, serif;
+    font-weight: 700;
+    font-size: clamp(10rem, 40vw, 24rem);
+    line-height: 1;
+    color: var(--rule);
+    letter-spacing: -0.04em;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .hero figcaption {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 16px 2px 0;
+  }
+
+  /* ---------- letter ---------- */
+  .letter {
+    max-width: 62ch;
+    margin: 52px auto 0;
+  }
+  .letter .eyebrow {
+    font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 18px;
+  }
+  .letter p {
+    margin: 0 0 1.15em;
+    font-size: clamp(1.02rem, 1.7vw, 1.16rem);
+    line-height: 1.68;
+    color: var(--ink-soft);
+  }
+  .letter p:first-of-type::first-letter {
+    font-family: "Bodoni Moda", "Didot", Georgia, serif;
+    font-weight: 700;
+    font-size: 3.5em;
+    line-height: 0.82;
+    float: left;
+    padding: 0.06em 0.09em 0 0;
+    color: var(--ink);
+  }
+  .letter .close {
+    font-family: "Bodoni Moda", "Didot", Georgia, serif;
+    font-style: italic;
+    font-size: clamp(1.5rem, 3.4vw, 2.1rem);
+    line-height: 1.3;
+    color: var(--ink);
+    margin: 30px 0 0;
+  }
+  .letter .sign {
+    font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 14px;
+  }
+
+  /* ---------- proof sheet ---------- */
+  .sheet-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin: 64px 0 0;
+  }
+  .sheet-head h2 {
+    font-family: "Bodoni Moda", "Didot", Georgia, serif;
+    font-weight: 700;
+    font-size: clamp(1.5rem, 4vw, 2.3rem);
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+  .sheet-head .note {
+    font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .proofs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px 18px;
+    margin-top: 22px;
+  }
+  @media (max-width: 720px) { .proofs { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 380px) { .proofs { grid-template-columns: 1fr; } }
+
+  .proof { margin: 0; }
+  /* The lineup is the one frame you are meant to stop at, so it gets the
+     page rather than a sixth of a row, at its own full resolution. */
+  .proof.wide {
+    grid-column: 1 / -1;
+    justify-self: start;
+    width: min(100vw - 40px, 900px);
+    margin-left: 50%;
+    transform: translateX(-50%);
+    margin-top: 10px;
+  }
+  .proof.wide figcaption { justify-content: center; gap: 10px; }
+
+
+  .proof .well {
+    background: var(--frame-bg);
+    border: 1px solid var(--rule);
+    overflow: hidden;
+  }
+  .proof img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+  .proof figcaption {
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+    font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-top: 8px;
+  }
+  .proof figcaption b {
+    color: var(--red);
+    font-weight: 500;
+    flex: none;
+  }
+
+  /* ---------- footer ---------- */
+  .foot {
+    margin-top: 58px;
+    font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+    justify-content: space-between;
+  }
+
+
+  /* ---------- clip ---------- */
+  .clip { display: grid; justify-items: center; gap: 18px; margin-top: 34px; }
+
+  /* Three sets in a row, escaping the narrow text column. Portrait clips on a
+     landscape screen pillarbox, so the row goes as wide as the page allows. */
+  .sets { display: grid; gap: 10px; }
+  @media (min-width: 900px) {
+    .sets {
+      width: min(100vw - 40px, 1020px);
+      margin-left: 50%;
+      transform: translateX(-50%);
+      grid-template-columns: repeat(3, 1fr);
+      align-items: start;
+      gap: 22px;
+    }
+    .sets .tv { max-width: 100%; }
+  }
+
+  /* ---------- the television ----------
+     A wide grey set: landscape screen, controls down the right cheek,
+     rabbit ears on top. Portrait clips sit pillarboxed, as they would
+     on a real television. */
+  .tv {
+    position: relative;
+    width: 100%;
+    max-width: 412px;
+    margin: 74px auto 20px;
+    padding: 16px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 11px;
+    border-radius: 16px 16px 9px 9px;
+    background: linear-gradient(162deg,
+      #D2CFC7 0%, #B3AFA7 22%, #918D86 52%, #A8A49C 78%, #CBC8C0 100%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.65),
+      inset 0 0 0 1px rgba(0, 0, 0, 0.30),
+      0 18px 34px rgba(0, 0, 0, 0.30),
+      0 4px 9px rgba(0, 0, 0, 0.22);
+  }
+  .tv::before, .tv::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    width: 16px;
+    height: 11px;
+    background: linear-gradient(#6D6A64, #3E3C37);
+    border-radius: 0 0 4px 4px;
+  }
+  .tv::before { left: 40px;  transform: skewX(11deg); }
+  .tv::after  { right: 40px; transform: skewX(-11deg); }
+
+  /* rabbit ears */
+  .antenna {
+    position: absolute;
+    left: 50%;
+    bottom: 100%;
+    width: 68%;
+    max-width: 330px;
+    transform: translateX(-50%);
+    pointer-events: none;
+    line-height: 0;
+  }
+  .antenna svg { display: block; width: 100%; height: auto; overflow: visible; }
+  .antenna .rod {
+    fill: none;
+    stroke: #C6C2BA;
+    stroke-width: 3;
+    stroke-linecap: round;
+  }
+  .antenna .tip  { fill: #DAD6CE; }
+  .antenna .foot { fill: #6E6A63; }
+
+  /* the glass */
+  .clip-frame {
+    position: relative;
+    line-height: 0;
+    overflow: hidden;
+    background: #080808;
+    border-radius: 16px / 22px;
+    box-shadow:
+      inset 0 0 0 3px #26241F,
+      inset 0 0 30px rgba(0, 0, 0, 0.95),
+      0 0 0 2px rgba(255, 255, 255, 0.10);
+  }
+  .clip-frame video {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: #000;
+  }
+  .glare {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    background:
+      linear-gradient(116deg,
+        rgba(255, 255, 255, 0.15) 0%,
+        rgba(255, 255, 255, 0.04) 19%,
+        rgba(255, 255, 255, 0) 40%),
+      repeating-linear-gradient(0deg,
+        rgba(255, 255, 255, 0.035) 0 1px,
+        rgba(0, 0, 0, 0) 1px 3px);
+  }
+
+  /* the right cheek: grille, knobs, model plate */
+  .tv-panel {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    padding: 0 2px 2px;
+  }
+  .grille {
+    flex: 1;
+    height: 16px;
+    min-height: 0;
+    border-radius: 3px;
+    background: repeating-linear-gradient(90deg,
+      rgba(0, 0, 0, 0.42) 0 2px, rgba(255, 255, 255, 0.30) 2px 5px);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.45);
+  }
+  .knob {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 34% 30%, #F0EDE6 0%, #A9A49B 46%, #56534D 100%);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.50), inset 0 0 0 1px rgba(0, 0, 0, 0.30);
+  }
+  .tv-plate {
+    font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    font-size: 8px;
+    line-height: 1;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #4C4943;
+    text-align: center;
+  }
+
+  @media (max-width: 560px) {
+    .tv {
+      margin-top: 58px;
+      padding: 11px;
+      gap: 10px;
+    }
+    .knob { width: 19px; height: 19px; }
+    .tv-plate { font-size: 7px; letter-spacing: 0.10em; }
+  }
+
+  .clip .sound {
+    /* on the glass, inside the cabinet */
+    position: absolute;
+    left: 12px;
+    bottom: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 9px;
+    font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    font-size: 10px;
+    line-height: 1;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    cursor: pointer;
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    transition: background 0.15s ease, opacity 0.2s ease;
+  }
+  .clip .sound:hover { background: rgba(0, 0, 0, 0.78); }
+  .clip .sound svg {
+    width: 13px;
+    height: 13px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .clip .sound .state-on { display: none; }
+  .clip .sound[aria-pressed="true"] .state-on { display: inline-flex; align-items: center; gap: 7px; }
+  .clip .sound[aria-pressed="true"] .state-off { display: none; }
+  .clip .sound .state-off { display: inline-flex; align-items: center; gap: 7px; }
+  .clip video[controls] ~ .sound { display: none; }
+
+  /* ---------- comic strip ---------- */
+  .strip { display: grid; gap: 14px; justify-items: center; margin-top: 24px; }
+  @media (min-width: 720px) {
+    .strip.row {
+      width: min(100vw - 40px, 1020px);
+      margin-left: 50%;
+      transform: translateX(-50%);
+      grid-template-columns: repeat(3, 1fr);
+      align-items: start;
+    }
+    .strip.row figcaption { grid-column: 1 / -1; }
+  }
+  .panel {
+    position: relative;
+    width: 100%;
+    max-width: 430px;
+    line-height: 0;
+    background: #FFF;
+    border: 2px solid var(--ink);
+    box-shadow: 4px 4px 0 var(--rule);
+  }
+  .panel img { display: block; width: 100%; height: auto; }
+  .panel b {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 4px 8px;
+    font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    font-size: 10px;
+    line-height: 1;
+    letter-spacing: 0.14em;
+    font-weight: 600;
+    color: var(--paper);
+    background: var(--ink);
+  }
+  .strip figcaption {
+    font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    font-size: 11px;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  /* ---------- advice ---------- */
+  .advice { margin-top: 24px; display: grid; justify-items: center; gap: 14px; }
+  .advice svg { display: block; width: 100%; max-width: 440px; height: auto; }
+  .advice .credit {
+    font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    font-size: 10px;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+  }
+  .venn-a { fill: #4A463F; }
+  .venn-b { fill: #9A452F; }
+  .venn-c { fill: #75612C; }
+  /* Solid-ish fills so white type has something to sit on; the overlaps
+     darken on their own and the centre ends up darkest of all. */
+  .venn circle { fill-opacity: 0.88; }
+  .venn text {
+    font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    fill: #FFFFFF;
+    font-weight: 500;
+  }
+  .venn .lbl     { font-size: 20px; letter-spacing: 0.02em; }
+  .venn .lbl-sm  { font-size: 14px; letter-spacing: 0.01em; fill: #F4EFE6; }
+  .venn .lbl-hit { font-size: 17px; letter-spacing: 0.14em; font-weight: 600; }
+
+  /* ---------- music ---------- */
+  .music {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 40;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    font-size: 10px;
+    line-height: 1;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    cursor: pointer;
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.10);
+    transition: opacity 0.25s ease, box-shadow 0.2s ease;
+  }
+  .music:hover { box-shadow: 0 2px 20px rgba(0, 0, 0, 0.16); }
+  .music .bars {
+    display: inline-flex;
+    align-items: flex-end;
+    gap: 2px;
+    width: 13px;
+    height: 12px;
+  }
+  .music .bars i {
+    display: block;
+    width: 3px;
+    height: 4px;
+    background: currentColor;
+  }
+  .music[aria-pressed="true"] .bars i { animation: eq 1.1s ease-in-out infinite; }
+  .music[aria-pressed="true"] .bars i:nth-child(2) { animation-delay: 0.18s; }
+  .music[aria-pressed="true"] .bars i:nth-child(3) { animation-delay: 0.36s; }
+  @keyframes eq {
+    0%, 100% { height: 3px; }
+    50%      { height: 12px; }
+  }
+  .music .label-on { display: none; }
+  .music[aria-pressed="true"] .label-on { display: inline; }
+  .music[aria-pressed="true"] .label-off { display: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .music[aria-pressed="true"] .bars i { animation: none; height: 8px; }
+  }
+  @media (max-width: 480px) {
+    .music { right: 12px; bottom: 12px; padding: 8px 10px; font-size: 9px; }
+  }
+  .clip figcaption {
+    font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    font-size: 11px;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  .pet { display: grid; justify-items: center; gap: 12px; margin-top: 24px; }
+  .pet img {
+    display: block;
+    width: 100%;
+    max-width: 330px;
+    height: auto;
+    border: 1px solid var(--rule);
+  }
+  .pet figcaption {
+    font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    font-size: 11px;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  /* ---------- gift ---------- */
+  .giftwrap {
+    display: grid;
+    justify-items: center;
+    gap: 6px;
+    padding: 34px 0 10px;
+  }
+  .box {
+    appearance: none;
+    background: none;
+    border: 0;
+    padding: 8px;
+    cursor: pointer;
+    display: grid;
+    justify-items: center;
+    gap: 14px;
+    color: inherit;
+    font: inherit;
+    border-radius: 6px;
+  }
+  .box:focus-visible { outline: 2px solid var(--red); outline-offset: 4px; }
+  .box-art {
+    position: relative;
+    width: 164px;
+    height: 142px;
+  }
+  .box-body {
+    position: absolute;
+    left: 7px; bottom: 0;
+    width: 150px; height: 100px;
+    background: var(--red);
+    border-radius: 3px;
+  }
+  .box-lid {
+    position: absolute;
+    left: 0; top: 30px;
+    width: 164px; height: 32px;
+    background: var(--red);
+    filter: brightness(0.82);
+    border-radius: 3px;
+    transform-origin: 12% 100%;
+    transition: transform 620ms cubic-bezier(.2,.8,.3,1);
+    z-index: 2;
+  }
+  .box-ribbon {
+    position: absolute;
+    left: 71px; bottom: 0;
+    width: 22px; height: 100px;
+    background: rgba(255,255,255,0.72);
+    z-index: 1;
+  }
+  .bow {
+    position: absolute;
+    left: 50%;
+    bottom: 76%;
+    width: 88px;
+    transform: translateX(-50%);
+    line-height: 0;
+    pointer-events: none;
+    z-index: 3;
+  }
+  .bow svg { display: block; width: 100%; height: auto; overflow: visible; }
+  .bow .loop {
+    fill: rgba(255, 255, 255, 0.93);
+    stroke: rgba(110, 18, 14, 0.38);
+    stroke-width: 1.3;
+  }
+  .bow .tail { fill: rgba(255, 255, 255, 0.84); }
+  .bow .knot { fill: #FFFFFF; }
+
+  .box-tag {
+    font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .box[aria-expanded="true"] .box-lid { transform: translate(-16px, -74px) rotate(-19deg); }
+
+  .cue {
+    font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    line-height: 1.7;
+    text-align: center;
+    color: var(--muted);
+    margin: 0 0 26px;
+    padding: 12px 14px;
+    border: 1px solid var(--rule);
+  }
+  .cue a { color: var(--red); text-decoration: none; border-bottom: 1px solid currentColor; }
+  .cue a:hover { opacity: 0.75; }
+
+  .theme {
+    font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    line-height: 1.7;
+    color: var(--muted);
+    margin-top: 22px;
+    padding-top: 14px;
+    border-top: 1px solid var(--rule);
+  }
+  .theme a {
+    color: var(--red);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 1px;
+  }
+  .theme a:hover { opacity: 0.75; }
+
+  .gift-out {
+    text-align: center;
+    display: grid;
+    gap: 4px;
+    padding-top: 6px;
+  }
+  .gift-out.reveal { animation: swell 620ms cubic-bezier(.2,.7,.3,1) both; }
+  .gift-amount {
+    font-family: "Bodoni Moda", "Didot", Georgia, serif;
+    font-weight: 700;
+    font-size: clamp(2.8rem, 12vw, 5.4rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+  .gift-toward {
+    font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-top: 6px;
+  }
+  .gift-aka {
+    font-family: "Bodoni Moda", "Didot", Georgia, serif;
+    font-style: italic;
+    font-size: clamp(1.15rem, 3vw, 1.5rem);
+    color: var(--ink-soft);
+    margin-top: 6px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .box-lid { transition: none; }
+    .gift-out.reveal { animation: none; }
+  }
+
+  /* ---------- load sequence (from visible rest) ---------- */
+  @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  @keyframes swell { from { opacity: 0; transform: translateY(14px) scale(0.985); } to { opacity: 1; transform: none; } }
+  .an { animation: rise 620ms cubic-bezier(.2,.7,.3,1) both; }
+  .an-1 { animation-delay: 60ms; }
+  .an-2 { animation-delay: 150ms; }
+  .an-3 { animation-delay: 240ms; }
+  .an-hero { animation: swell 760ms cubic-bezier(.2,.7,.3,1) both; animation-delay: 180ms; }
+  @media (prefers-reduced-motion: reduce) {
+    .an, .an-hero { animation: none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="rule heavy"></div>
+  <header class="colophon an an-1">
+    <span>Private edition &middot; One copy printed</span>
+    <span><span class="mark">&#9679;</span> No.&nbsp;23 &middot; 26 September 2026</span>
+  </header>
+  <div class="rule"></div>
+
+  <h1 class="masthead an an-2">
+    Sebastian
+    <em>twenty-three years old today</em>
+  </h1>
+
+  <figure class="hero an-hero">
+    <div class="frame">
+      <div class="frame-mat">
+        <img src="img/hero.jpg" alt="Sebastian as a small boy standing at the water's edge, bucket and spade on the sand" width="401" height="600">
+      </div>
+    </div>
+    <div class="numeral" aria-hidden="true">23</div>
+    <figcaption>Bucket, spade, and the whole ocean</figcaption>
+  </figure>
+
+  <p class="cue">Before you read &mdash; press play on
+    <a href="https://music.apple.com/us/album/love-theme-from-cousins/1646464219?i=1646465570"
+    target="_blank" rel="noopener">Love Theme from Cousins</a>, then come back.</p>
+
+  <section class="letter an an-3">
+    <div class="eyebrow">A note from Mom and Dad</div>
+
+    <p>You showed up, and it has been a joy ever since.</p>
+
+    <p>I have been going through photographs this week &mdash; tens of thousands of them, scattered across drives and old phones and libraries nobody had opened in years. There is the log flume in 2017: you soaked straight through, next to Herman, both of you laughing. That was a good time. Sorry about the rollercoasters.</p>
+
+    <p>And the basketball booth on the midway at Great Adventure, the day you cleared the shelf. You walked away with the camel, the lion and whatever else would fit under an arm, and the man running the stand finally told me to get you out of there &mdash; you were costing him too much money.</p>
+
+    <p>Everyone warns you that they grow up. Nobody mentions that if you are lucky, they turn into your favorite person and most treasured thing in the world.</p>
+
+    <p class="close">Happy birthday, Sebastian. We love you &mdash; all of it.</p>
+    <p class="sign">&mdash; Mom and Dad &middot; 26 September 2026</p>
+    <p class="theme">P.S. &mdash; there is a piece of music that belongs to this.
+    Put on <a href="https://music.apple.com/us/album/love-theme-from-cousins/1646464219?i=1646465570"
+    target="_blank" rel="noopener">Love Theme from Cousins</a>, then scroll back to the top
+    and read it again.</p>
+  </section>
+
+  <div class="sheet-head an">
+    <h2>Contact sheet</h2>
+    <span class="note">Ten frames &middot; the long way round</span>
+  </div>
+  <div class="rule"></div>
+
+  <div class="proofs">
+    <figure class="proof">
+      <div class="well"><img src="img/shoulders.jpg" alt="Sebastian as a toddler riding on his mother's shoulders along an autumn path" loading="lazy"></div>
+      <figcaption><b>01</b><span>Up on Mom&rsquo;s shoulders &middot; autumn</span></figcaption>
+    </figure>
+    <figure class="proof">
+      <div class="well"><img src="img/g1.jpg" alt="Sebastian as a boy in a Knicks beanie eating an enormous sandwich" loading="lazy"></div>
+      <figcaption><b>02</b><span>A sandwich bigger than his head</span></figcaption>
+    </figure>
+    <figure class="proof">
+      <div class="well"><img src="img/g2.jpg" alt="Sebastian sitting alone beneath a huge maple tree" loading="lazy"></div>
+      <figcaption><b>03</b><span>One boy, one tree</span></figcaption>
+    </figure>
+    <figure class="proof">
+      <div class="well"><img src="img/g3.jpg" alt="Sebastian hiking in saguaro cactus country in Arizona" loading="lazy"></div>
+      <figcaption><b>04</b><span>Arizona &middot; saguaro country</span></figcaption>
+    </figure>
+    <figure class="proof">
+      <div class="well"><img src="img/g4.jpg" alt="Sebastian in a bucket hat with the giant stuffed animals won at the basketball kiosk" loading="lazy"></div>
+      <figcaption><b>05</b><span>The kiosk haul &middot; Great Adventure &middot; 2017</span></figcaption>
+    </figure>
+    <figure class="proof">
+      <div class="well"><img src="img/g5.jpg" alt="Sebastian and family on the Nitro rollercoaster" loading="lazy"></div>
+      <figcaption><b>06</b><span>Nitro &middot; 18 June 2017</span></figcaption>
+    </figure>
+    <figure class="proof">
+      <div class="well"><img src="img/g6.jpg" alt="Sebastian soaked on the log flume with Herman" loading="lazy"></div>
+      <figcaption><b>07</b><span>Log flume &middot; with Herman &middot; 2017</span></figcaption>
+    </figure>
+    <figure class="proof">
+      <div class="well"><img src="img/g7.jpg" alt="Sebastian laying the ball up at the rim beneath the championship banners" loading="lazy"></div>
+      <figcaption><b>08</b><span>NYMA &middot; at the rim</span></figcaption>
+    </figure>
+    <figure class="proof">
+      <div class="well"><img src="img/g8.jpg" alt="Sebastian on the floor during an NYMA game" loading="lazy"></div>
+      <figcaption><b>09</b><span>NYMA &middot; in the game</span></figcaption>
+    </figure>
+    <figure class="proof wide">
+      <div class="well"><img src="img/g9.jpg" alt="Broadcast graphic showing the Pratt starting lineup, with Roda at number zero" loading="lazy"></div>
+      <figcaption><b>10</b><span>Pratt &middot; starting five &middot; 0 Roda, G</span></figcaption>
+    </figure>
+  </div>
+
+  <div class="rule"></div>
+  <div class="sheet-head">
+    <h2>Also present</h2>
+    <span class="note">Blue harness &middot; strong opinions</span>
+  </div>
+  <figure class="pet">
+    <img src="img/dog.jpg" alt="A small scruffy dog in a blue harness looking up at the camera" loading="lazy">
+    <figcaption>Holding down the rug</figcaption>
+  </figure>
+
+  <div class="rule"></div>
+  <div class="sheet-head">
+    <h2>Moving pictures</h2>
+    <span class="note">Three sets &middot; 2016, 2018 and now</span>
+  </div>
+  <div class="sets">
+  <figure class="clip">
+    <div class="tv">
+      <span class="antenna" aria-hidden="true"><svg viewBox="0 0 300 96"><path class="rod" d="M150 86 L32 12"/><path class="rod" d="M150 86 L268 12"/><circle class="tip" cx="32" cy="12" r="4.5"/><circle class="tip" cx="268" cy="12" r="4.5"/><path class="foot" d="M131 96h38l-6-13h-26z"/></svg></span>
+      <div class="clip-frame">
+      <video src="vid/clip-2016.mp4" poster="img/poster-2016.jpg" controls playsinline preload="metadata" width="540" height="960"></video>
+      <span class="glare" aria-hidden="true"></span>
+    </div>
+    <div class="tv-panel" aria-hidden="true">
+      <span class="tv-plate">Model 2016</span>
+      <span class="grille"></span>
+      <span class="knob"></span>
+      <span class="knob"></span>
+    </div>
+  </div>
+    <figcaption>Under the flags &mdash; a long way before the starting five</figcaption>
+  </figure>
+
+  <figure class="clip">
+    <div class="tv">
+      <span class="antenna" aria-hidden="true"><svg viewBox="0 0 300 96"><path class="rod" d="M150 86 L32 12"/><path class="rod" d="M150 86 L268 12"/><circle class="tip" cx="32" cy="12" r="4.5"/><circle class="tip" cx="268" cy="12" r="4.5"/><path class="foot" d="M131 96h38l-6-13h-26z"/></svg></span>
+      <div class="clip-frame">
+      <video src="vid/clip-2018.mp4" poster="img/poster-2018.jpg" controls playsinline preload="metadata" width="1080" height="1920"></video>
+      <span class="glare" aria-hidden="true"></span>
+    </div>
+    <div class="tv-panel" aria-hidden="true">
+      <span class="tv-plate">Model 2018</span>
+      <span class="grille"></span>
+      <span class="knob"></span>
+      <span class="knob"></span>
+    </div>
+  </div>
+    <figcaption>Gibraltar &mdash; the ape picked him</figcaption>
+  </figure>
+
+  <figure class="clip">
+    <div class="tv">
+      <span class="antenna" aria-hidden="true"><svg viewBox="0 0 300 96"><path class="rod" d="M150 86 L32 12"/><path class="rod" d="M150 86 L268 12"/><circle class="tip" cx="32" cy="12" r="4.5"/><circle class="tip" cx="268" cy="12" r="4.5"/><path class="foot" d="M131 96h38l-6-13h-26z"/></svg></span>
+      <div class="clip-frame">
+      <video id="clipvid" src="vid/clip.mp4" poster="img/poster.jpg" controls playsinline preload="metadata" width="576" height="1024"></video>
+      <span class="glare" aria-hidden="true"></span>
+    </div>
+    <div class="tv-panel" aria-hidden="true">
+      <span class="tv-plate">Model 2023</span>
+      <span class="grille"></span>
+      <span class="knob"></span>
+      <span class="knob"></span>
+    </div>
+  </div>
+    <figcaption>Tik tok&rsquo;s best sharpshooter &mdash; his words, not ours</figcaption>
+  </figure>
+  </div>
+
+
+  <div class="rule"></div>
+  <div class="sheet-head">
+    <h2>Three panels, one jump</h2>
+    <span class="note">Hoop Group &middot; 6 August 2018 &middot; coach&rsquo;s notes</span>
+  </div>
+
+  <figure class="strip row">
+    <div class="panel">
+      <img src="img/strip-1.jpg" alt="Sebastian running in to the basket, arms loaded behind him. The coach has drawn a speech bubble reading: Good load with the arms." loading="lazy">
+      <b>1</b>
+    </div>
+    <div class="panel">
+      <img src="img/strip-2.jpg" alt="Sebastian gathering for the jump. The coach's bubble reads: Good follow through with leg." loading="lazy">
+      <b>2</b>
+    </div>
+    <div class="panel">
+      <img src="img/strip-3.jpg" alt="Sebastian stretched full length at the rim. Two bubbles: Great body extension, and Wow great air, find out how high that was." loading="lazy">
+      <b>3</b>
+    </div>
+    <figcaption>Somebody was already taking notes on you</figcaption>
+  </figure>
+
+  <div class="rule"></div>
+  <div class="sheet-head">
+    <h2>A little parently advice</h2>
+    <span class="note">Three circles &middot; aim for the middle</span>
+  </div>
+
+  <figure class="advice">
+    <svg class="venn" viewBox="0 0 560 536" role="img"
+         aria-label="Three overlapping circles: what you do well, what you love doing, and what someone will pay you for. Where all three meet is the place to aim for.">
+      <circle class="venn-a" cx="280" cy="186" r="168"/>
+      <circle class="venn-b" cx="192" cy="340" r="168"/>
+      <circle class="venn-c" cx="368" cy="340" r="168"/>
+
+      <text class="lbl" x="280" y="96" text-anchor="middle">
+        <tspan x="280" dy="0">What you</tspan>
+        <tspan x="280" dy="23">do well</tspan>
+      </text>
+      <text class="lbl" x="112" y="392" text-anchor="middle">
+        <tspan x="112" dy="0">What you</tspan>
+        <tspan x="112" dy="23">love doing</tspan>
+      </text>
+      <text class="lbl" x="452" y="380" text-anchor="middle">
+        <tspan x="452" dy="0">What someone</tspan>
+        <tspan x="452" dy="23">will pay</tspan>
+        <tspan x="452" dy="23">you for</tspan>
+      </text>
+
+      <text class="lbl-sm" x="196" y="243" text-anchor="middle">
+        <tspan x="196" dy="0">Find who</tspan>
+        <tspan x="196" dy="17">needs it</tspan>
+      </text>
+      <text class="lbl-sm" x="364" y="243" text-anchor="middle">
+        <tspan x="364" dy="0">Guard</tspan>
+        <tspan x="364" dy="17">your time</tspan>
+      </text>
+      <text class="lbl-sm" x="280" y="410" text-anchor="middle">
+        <tspan x="280" dy="0">Get better</tspan>
+        <tspan x="280" dy="17">at it</tspan>
+      </text>
+
+      <text class="lbl-hit" x="280" y="298" text-anchor="middle">AIM HERE</text>
+    </svg>
+    <figcaption class="credit">After Bud Caddell&rsquo;s three circles &middot; drawn for you</figcaption>
+  </figure>
+
+  <div class="rule"></div>
+  <div class="sheet-head">
+    <h2>One more thing</h2>
+    <span class="note">Sealed &middot; open it</span>
+  </div>
+
+  <div class="giftwrap">
+    <button class="box" id="gift" aria-expanded="false" aria-controls="giftout">
+      <span class="box-art" aria-hidden="true">
+        <span class="box-body"></span>
+        <span class="box-ribbon"></span>
+        <span class="box-lid"><span class="bow"><svg viewBox="0 0 88 46" aria-hidden="true"><path class="tail" d="M41 32c-7 6-12 10-19 13l8-12z"/><path class="tail" d="M47 32c7 6 12 10 19 13l-8-12z"/><path class="loop" d="M44 28C31 6 7 8 10 22c2 10 21 11 34 6z"/><path class="loop" d="M44 28C57 6 81 8 78 22c-2 10-21 11-34 6z"/><ellipse class="knot" cx="44" cy="28" rx="7.5" ry="6.5"/></svg></span></span>
+      </span>
+      <span class="box-tag" id="gifttag">Open</span>
+    </button>
+
+    <div class="gift-out" id="giftout" hidden>
+      <div class="gift-amount">$1,500.00</div>
+      <div class="gift-toward">Towards AI self-improvement</div>
+      <div class="gift-aka">&mdash; a computer &nbsp;;&#8209;)</div>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+  <footer class="foot">
+    <span>Born 2003 &middot; Photographs 2017&ndash;2023</span>
+    <span>Printed once, with love, for one reader</span>
+  </footer>
+
+</div>
+
+<button class="music" id="music" type="button" aria-pressed="false" aria-label="Play music">
+  <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
+  <span class="label-off">Music</span>
+  <span class="label-on">Playing</span>
+</button>
+
+<script>
+  /* ------------------------------------------------------------------
+     An original passacaglia, performed by the page itself.
+     Harpsichord-ish plucks over a descending ground bass in D major.
+     Nothing is streamed or sampled: every note is synthesised here, so
+     the card works offline and owes nobody anything.
+     ------------------------------------------------------------------ */
+  window.__cardMusic = (function () {
+    var BPM = 92;
+    var BEAT = 60 / BPM;
+    var EIGHTH = BEAT / 2;
+    var BAR = BEAT * 4;
+
+    /* Eight bars of ground. Bass roots, chord for the inner voice,
+       and a melody of eighth notes written over the top. */
+    var BASS   = [38, 37, 35, 33, 31, 30, 31, 33];
+    var CHORDS = [
+      [62, 66, 69], [61, 64, 69], [59, 62, 66], [57, 61, 66],
+      [59, 62, 67], [54, 57, 62], [55, 59, 62], [57, 61, 64]
+    ];
+    var MELODY = [
+      [74, 76, 78, 76, 74, 73, 74, 78],
+      [76, 74, 73, 71, 73, 74, 73, 69],
+      [78, 76, 74, 73, 74, 76, 74, 71],
+      [73, 74, 76, 74, 73, 71, 69, 73],
+      [71, 73, 74, 76, 78, 76, 74, 71],
+      [74, 73, 74, 76, 74, 73, 71, 69],
+      [71, 74, 78, 76, 74, 71, 74, 76],
+      [73, 76, 74, 73, 71, 69, 71, 73]
+    ];
+    var ARP = [0, 1, 2, 1, 0, 1, 2, 1];
+
+    var LEVEL = 0.22;   /* master volume once it is up */
+    var ctx = null, master = null, wet = null;
+    var timer = null, nextBar = 0, bar = 0;
+    var playing = false, ducked = false;
+
+    function hz(midi) { return 440 * Math.pow(2, (midi - 69) / 12); }
+
+    function build() {
+      var AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return false;
+      ctx = new AC();
+
+      master = ctx.createGain();
+      master.gain.value = 0;
+      master.connect(ctx.destination);
+
+      /* A short synthetic room, so the plucks are not bone dry. */
+      var len = Math.floor(ctx.sampleRate * 1.7);
+      var buf = ctx.createBuffer(2, len, ctx.sampleRate);
+      for (var c = 0; c < 2; c++) {
+        var d = buf.getChannelData(c);
+        for (var i = 0; i < len; i++) {
+          d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 2.6);
+        }
+      }
+      var verb = ctx.createConvolver();
+      verb.buffer = buf;
+      wet = ctx.createGain();
+      wet.gain.value = 0.28;
+      wet.connect(verb);
+      verb.connect(master);
+      return true;
+    }
+
+    /* One plucked note: two slightly detuned saws through a falling filter. */
+    function pluck(midi, at, dur, level) {
+      var f = hz(midi);
+      var g = ctx.createGain();
+      var filt = ctx.createBiquadFilter();
+      filt.type = 'lowpass';
+      filt.frequency.setValueAtTime(Math.min(7000, f * 9), at);
+      filt.frequency.exponentialRampToValueAtTime(Math.max(320, f * 2.2), at + dur * 0.85);
+      filt.Q.value = 0.9;
+
+      for (var k = 0; k < 2; k++) {
+        var o = ctx.createOscillator();
+        o.type = k ? 'square' : 'sawtooth';
+        o.frequency.value = f;
+        o.detune.value = k ? 7 : -7;
+        var og = ctx.createGain();
+        og.gain.value = k ? 0.32 : 0.68;
+        o.connect(og);
+        og.connect(filt);
+        o.start(at);
+        o.stop(at + dur + 0.05);
+      }
+
+      g.gain.setValueAtTime(0.0001, at);
+      g.gain.exponentialRampToValueAtTime(level, at + 0.006);
+      g.gain.exponentialRampToValueAtTime(level * 0.28, at + dur * 0.35);
+      g.gain.exponentialRampToValueAtTime(0.0001, at + dur);
+
+      filt.connect(g);
+      g.connect(master);
+      g.connect(wet);
+    }
+
+    function scheduleBar(n, at) {
+      var i = n % 8;
+      var root = BASS[i], chord = CHORDS[i], tune = MELODY[i];
+
+      /* Ground bass: root, fifth above, root, and a step toward the next bar. */
+      pluck(root, at, BEAT * 1.6, 0.30);
+      pluck(root + 7, at + BEAT, BEAT * 0.8, 0.17);
+      pluck(root, at + BEAT * 2, BEAT * 1.2, 0.26);
+      pluck(BASS[(i + 1) % 8] + 12, at + BEAT * 3, BEAT * 0.7, 0.13);
+
+      for (var e = 0; e < 8; e++) {
+        var t = at + e * EIGHTH;
+        pluck(chord[ARP[e]], t, EIGHTH * 1.7, 0.10);          /* inner voice  */
+        pluck(tune[e], t, EIGHTH * (e % 2 ? 1.5 : 1.9), 0.20); /* melody       */
+      }
+    }
+
+    /* Look ahead a bar at a time; a timer this coarse never audibly drifts
+       because every note is stamped against ctx.currentTime. */
+    function tick() {
+      while (nextBar < ctx.currentTime + 1.2) {
+        if (nextBar < ctx.currentTime) nextBar = ctx.currentTime + 0.06;
+        scheduleBar(bar, nextBar);
+        nextBar += BAR;
+        bar++;
+      }
+    }
+
+    function fade(to, secs) {
+      var now = ctx.currentTime;
+      master.gain.cancelScheduledValues(now);
+      master.gain.setValueAtTime(Math.max(0.0001, master.gain.value), now);
+      master.gain.linearRampToValueAtTime(to, now + secs);
+    }
+
+    function start() {
+      if (!ctx && !build()) return;
+      /* Always try to wake the context, even when we already believe we are
+         playing: an earlier attempt may have been refused for want of a real
+         interaction, and this call may be the one the browser allows. */
+      if (ctx.state === 'suspended') ctx.resume();
+      if (playing) {
+        fade(ducked ? 0.0001 : LEVEL, 1.2);
+        announce();
+        return;
+      }
+      playing = true;
+      bar = 0;
+      nextBar = ctx.currentTime + 0.12;
+      tick();
+      timer = setInterval(tick, 320);
+      fade(ducked ? 0.0001 : LEVEL, 2.2);
+      announce();
+    }
+
+    function stop() {
+      if (!playing) return;
+      playing = false;
+      clearInterval(timer);
+      timer = null;
+      fade(0.0001, 0.7);
+      setTimeout(function () { if (!playing && ctx) ctx.suspend(); }, 900);
+      announce();
+    }
+
+    var btn = null;
+    function announce() {
+      if (!btn) btn = document.getElementById('music');
+      if (!btn) return;
+      btn.setAttribute('aria-pressed', playing ? 'true' : 'false');
+      btn.setAttribute('aria-label', playing ? 'Stop music' : 'Play music');
+    }
+
+    return {
+      toggle: function () { playing ? stop() : start(); },
+      start: start,
+      isPlaying: function () { return playing; },
+      /* Did the browser actually let us make a sound? */
+      running: function () { return !!ctx && ctx.state === 'running'; },
+      /* Stand aside while the clip is talking. */
+      duck: function () { ducked = true; if (playing) fade(0.0001, 0.35); },
+      unduck: function () { ducked = false; if (playing) fade(LEVEL, 1.2); }
+    };
+  })();
+
+  (function () {
+    var m = window.__cardMusic;
+    var btn = document.getElementById('music');
+    if (!m || !btn) return;
+
+    btn.addEventListener('click', function () {
+      started = true;          /* his choice from here on */
+      release();
+      m.toggle();
+    });
+
+    /* Start on the first scroll.
+       On a phone this works as you would hope: a swipe ends in a touchend,
+       which browsers accept as a real interaction, so the music comes up as
+       he scrolls. With a mouse wheel it does not count, so we keep listening
+       and the first click or key does it instead. Each attempt is checked --
+       if the browser silently refused, we stay armed and try again. */
+    var started = false;
+    var EVENTS = ['scroll', 'touchend', 'pointerup', 'keydown'];
+
+    function release() {
+      EVENTS.forEach(function (e) { window.removeEventListener(e, attempt, true); });
+    }
+
+    function attempt() {
+      if (started) return;
+      m.start();
+      setTimeout(function () {
+        if (m.running()) {
+          started = true;
+          release();
+        }
+      }, 140);
+    }
+
+    EVENTS.forEach(function (e) {
+      window.addEventListener(e, attempt, { capture: true, passive: true });
+    });
+
+  })();
+</script>
+
+<script>
+  /* The clips play only when asked. Nothing on this page makes a sound on its
+     own, so the theme song has the room to itself. */
+  (function () {
+    var vids = document.querySelectorAll('.clip-frame video');
+    if (!vids.length) return;
+
+    function anyPlaying() {
+      return Array.prototype.some.call(vids, function (o) { return !o.paused; });
+    }
+
+    Array.prototype.forEach.call(vids, function (v) {
+      v.addEventListener('play', function () {
+        /* one set at a time */
+        Array.prototype.forEach.call(vids, function (o) { if (o !== v) o.pause(); });
+        if (window.__cardMusic) window.__cardMusic.duck();
+      });
+      v.addEventListener('pause', function () {
+        if (!anyPlaying() && window.__cardMusic) window.__cardMusic.unduck();
+      });
+    });
+
+    document.addEventListener('visibilitychange', function () {
+      if (!document.hidden) return;
+      Array.prototype.forEach.call(vids, function (v) { if (!v.paused) v.pause(); });
+    });
+  })();
+</script>
+
+<script>
+  (function () {
+    var btn = document.getElementById('gift');
+    var out = document.getElementById('giftout');
+    var tag = document.getElementById('gifttag');
+    if (!btn || !out || !tag) return;
+    btn.addEventListener('click', function () {
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      if (open) {
+        btn.setAttribute('aria-expanded', 'false');
+        out.hidden = true;
+        out.classList.remove('reveal');
+        tag.textContent = 'Open';
+      } else {
+        btn.setAttribute('aria-expanded', 'true');
+        out.hidden = false;
+        requestAnimationFrame(function () { out.classList.add('reveal'); });
+        tag.textContent = 'Happy birthday';
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
