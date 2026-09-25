@@ -1436,39 +1436,10 @@
     var btn = document.getElementById('music');
     if (!m || !btn) return;
 
-    btn.addEventListener('click', function () {
-      started = true;          /* his choice from here on */
-      release();
-      m.toggle();
-    });
+    /* The page never starts its own music. The theme song is the point; this
+       is only here if he goes looking for it. */
+    btn.addEventListener('click', function () { m.toggle(); });
 
-    /* Start on the first scroll.
-       On a phone this works as you would hope: a swipe ends in a touchend,
-       which browsers accept as a real interaction, so the music comes up as
-       he scrolls. With a mouse wheel it does not count, so we keep listening
-       and the first click or key does it instead. Each attempt is checked --
-       if the browser silently refused, we stay armed and try again. */
-    var started = false;
-    var EVENTS = ['scroll', 'touchend', 'pointerup', 'keydown'];
-
-    function release() {
-      EVENTS.forEach(function (e) { window.removeEventListener(e, attempt, true); });
-    }
-
-    function attempt() {
-      if (started) return;
-      m.start();
-      setTimeout(function () {
-        if (m.running()) {
-          started = true;
-          release();
-        }
-      }, 140);
-    }
-
-    EVENTS.forEach(function (e) {
-      window.addEventListener(e, attempt, { capture: true, passive: true });
-    });
 
   })();
 </script>
