@@ -817,73 +817,35 @@
   }
   .box[aria-expanded="true"] .box-lid { transform: translate(-16px, -74px) rotate(-19deg); }
 
-  .cue {
-    margin: 0 0 28px;
-    padding: 16px 14px 14px;
-    border: 1px solid var(--rule);
-    background: var(--paper-lift);
-    text-align: center;
-  }
-  .cue .cue-line {
-    font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
-    font-size: 11px;
-    letter-spacing: 0.10em;
-    line-height: 1.6;
-    color: var(--muted);
-    margin: 0 0 12px;
-  }
-  /* A real play button, so there is one even where the embed cannot load. */
+  .cue { margin: 0 0 26px; text-align: center; }
   .playbtn {
     display: inline-flex;
     align-items: center;
-    gap: 13px;
-    text-align: left;
+    gap: 11px;
     text-decoration: none;
-    padding: 11px 18px 11px 13px;
+    padding: 9px 20px 9px 9px;
     border: 1px solid var(--rule);
-    background: var(--paper);
+    background: var(--paper-lift);
     color: var(--ink);
     border-radius: 999px;
+    font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
     transition: box-shadow 0.18s ease, transform 0.18s ease;
   }
-  .playbtn:hover { box-shadow: 0 3px 16px rgba(0, 0, 0, 0.16); transform: translateY(-1px); }
+  .playbtn:hover { box-shadow: 0 3px 14px rgba(0, 0, 0, 0.15); transform: translateY(-1px); }
   .playbtn-ico {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 34px;
-    height: 34px;
-    flex: 0 0 34px;
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
     border-radius: 50%;
     background: var(--red);
   }
-  .playbtn-ico svg { width: 17px; height: 17px; fill: #FFF; margin-left: 2px; }
-  .playbtn-txt { display: grid; gap: 2px; }
-  .playbtn-txt b {
-    font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-  .playbtn-txt i {
-    font-style: normal;
-    font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
-    font-size: 10px;
-    letter-spacing: 0.06em;
-    color: var(--muted);
-  }
-  .cue .player {
-    display: block;
-    width: 100%;
-    max-width: 480px;
-    margin: 14px auto 0;
-    height: 175px;
-    overflow: hidden;
-    border: 0;
-    background: transparent;
-    border-radius: 10px;
-  }
+  .playbtn-ico svg { width: 15px; height: 15px; fill: #FFF; margin-left: 2px; }
 
   .theme {
     font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
@@ -978,24 +940,14 @@
   </figure>
 
   <div class="cue">
-    <p class="cue-line">Before you read &mdash; press play.</p>
-
     <a class="playbtn"
        href="https://music.apple.com/us/album/love-theme-from-cousins/1646464219?i=1646465570"
        target="_blank" rel="noopener">
       <span class="playbtn-ico" aria-hidden="true">
         <svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg>
       </span>
-      <span class="playbtn-txt">
-        <b>Love Theme from Cousins</b>
-        <i>Play it, then come back</i>
-      </span>
+      Play the theme
     </a>
-
-    <iframe class="player" title="Love Theme from Cousins on Apple Music"
-      allow="autoplay *; encrypted-media *;" frameborder="0" height="175" loading="lazy"
-      sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
-      src="https://embed.music.apple.com/us/album/love-theme-from-cousins/1646464219?i=1646465570"></iframe>
   </div>
 
   <section class="letter an an-3">
