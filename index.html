@@ -788,15 +788,31 @@
   .box[aria-expanded="true"] .box-lid { transform: translate(-16px, -74px) rotate(-19deg); }
 
   .cue {
+    margin: 0 0 28px;
+    padding: 16px 14px 12px;
+    border: 1px solid var(--rule);
+    background: var(--paper-lift);
+    text-align: center;
+  }
+  .cue .cue-line, .cue .cue-alt {
     font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
     font-size: 11px;
-    letter-spacing: 0.08em;
-    line-height: 1.7;
-    text-align: center;
+    letter-spacing: 0.10em;
+    line-height: 1.6;
     color: var(--muted);
-    margin: 0 0 26px;
-    padding: 12px 14px;
-    border: 1px solid var(--rule);
+    margin: 0;
+  }
+  .cue .cue-alt { margin-top: 8px; font-size: 10px; }
+  .cue .player {
+    display: block;
+    width: 100%;
+    max-width: 480px;
+    margin: 12px auto 0;
+    height: 175px;
+    overflow: hidden;
+    border: 0;
+    background: transparent;
+    border-radius: 10px;
   }
   .cue a { color: var(--red); text-decoration: none; border-bottom: 1px solid currentColor; }
   .cue a:hover { opacity: 0.75; }
@@ -893,9 +909,16 @@
     <figcaption>Bucket, spade, and the whole ocean</figcaption>
   </figure>
 
-  <p class="cue">Before you read &mdash; press play on
-    <a href="https://music.apple.com/us/album/love-theme-from-cousins/1646464219?i=1646465570"
-    target="_blank" rel="noopener">Love Theme from Cousins</a>, then come back.</p>
+  <div class="cue">
+    <p class="cue-line">Before you read &mdash; press play.</p>
+    <iframe class="player" title="Love Theme from Cousins on Apple Music"
+      allow="autoplay *; encrypted-media *;" frameborder="0" height="175" loading="lazy"
+      sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+      src="https://embed.music.apple.com/us/album/love-theme-from-cousins/1646464219?i=1646465570"></iframe>
+    <p class="cue-alt">Not playing? <a
+      href="https://music.apple.com/us/album/love-theme-from-cousins/1646464219?i=1646465570"
+      target="_blank" rel="noopener">Open it in Apple Music</a>.</p>
+  </div>
 
   <section class="letter an an-3">
     <div class="eyebrow">A note from Mom and Dad</div>
