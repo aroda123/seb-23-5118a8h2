@@ -108,6 +108,11 @@
     margin: 18px 0 6px;
     text-wrap: balance;
   }
+  .masthead .age {
+    color: var(--red);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
   .masthead em {
     font-style: italic;
     font-weight: 400;
@@ -590,6 +595,33 @@
   .letter::after { content: ""; display: block; clear: both; }
   .letter .close, .letter .sign { clear: both; }
 
+  /* ---------- full-width plates ---------- */
+  .plates { display: grid; gap: 22px; justify-items: center; margin-top: 24px; }
+  @media (min-width: 760px) {
+    .plates {
+      width: min(100vw - 40px, 720px);
+      margin-left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  .plate { width: 100%; max-width: 700px; }
+  .plate img {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: var(--frame-bg);
+    border: 1px solid var(--rule);
+  }
+  .plate figcaption {
+    font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    font-size: 10px;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+    margin-top: 8px;
+  }
+
   /* ---------- comic strip ---------- */
   .strip { display: grid; gap: 14px; justify-items: center; margin-top: 24px; }
   @media (min-width: 720px) {
@@ -925,8 +957,8 @@
   <div class="rule"></div>
 
   <h1 class="masthead an an-2">
-    Sebastian
-    <em>twenty-three years old today</em>
+    Sebastian <span class="age">23</span>
+    <em>years old today</em>
   </h1>
 
   <figure class="hero an-hero">
@@ -971,10 +1003,6 @@
 
     <p class="close">Happy birthday, Sebastian. We love you &mdash; all of it.</p>
     <p class="sign">&mdash; Mom and Dad &middot; 26 September 2026</p>
-    <p class="theme">P.S. &mdash; there is a piece of music that belongs to this.
-    Put on <a href="https://music.apple.com/us/album/love-theme-from-cousins/1646464219?i=1646465570"
-    target="_blank" rel="noopener">Love Theme from Cousins</a>, then scroll back to the top
-    and read it again.</p>
   </section>
 
   <div class="sheet-head an">
@@ -1023,6 +1051,27 @@
     <figure class="proof wide">
       <div class="well"><img src="img/g9.jpg" alt="Broadcast graphic showing the Pratt starting lineup, with Roda at number zero" loading="lazy"></div>
       <figcaption><b>10</b><span>Pratt &middot; starting five &middot; 0 Roda, G</span></figcaption>
+    </figure>
+  </div>
+
+  <div class="rule"></div>
+  <div class="sheet-head">
+    <h2>Brooklyn, and after</h2>
+    <span class="note">The courts on the water &middot; then Pratt</span>
+  </div>
+
+  <div class="plates">
+    <figure class="plate">
+      <img src="img/bk-court.png" alt="Sebastian on the Brooklyn Bridge Park court, ball under one arm, Manhattan behind him" loading="lazy">
+      <figcaption>Pier 2 &middot; before the lights</figcaption>
+    </figure>
+    <figure class="plate">
+      <img src="img/bk-dunks.png" alt="Three frames of Sebastian dunking on the same court, once in daylight and twice after dark" loading="lazy">
+      <figcaption>Same rim, day and night</figcaption>
+    </figure>
+    <figure class="plate">
+      <img src="img/pratt.png" alt="Sebastian shooting under the NYMA New England Class D Champions 2018 banner, the Pratt Cannoneers mark, and the Pratt campus walk" loading="lazy">
+      <figcaption>Champions 2018, then the Cannoneers</figcaption>
     </figure>
   </div>
 
