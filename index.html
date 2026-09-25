@@ -786,13 +786,21 @@
     cursor: pointer;
     font: inherit;
   }
-  .giftsvg { width: min(64vw, 300px); height: auto; overflow: visible; }
-  .g-lid, .g-body {
-    transition: transform 0.8s cubic-bezier(.2,.8,.3,1), opacity 0.6s ease;
+  /* the same box as the one at the foot of the page, simply larger */
+  .gate-art {
+    --gs: 2;
+    width: calc(164px * var(--gs));
+    height: calc(158px * var(--gs));
+    display: grid;
+    place-items: center;
   }
-  .g-lid { transform-origin: 50% 85%; }
-  .gate.opening .g-lid  { transform: translate(-18px, -190px) rotate(-17deg); }
-  .gate.opening .g-body { transform: translateY(10px); opacity: 0.9; }
+  .gate-art .box-art { transform: scale(var(--gs)); }
+  .gate-art .box-body,
+  .gate-art .box-ribbon { transition: transform 0.7s ease, opacity 0.6s ease; }
+  .gate.opening .box-lid { transform: translate(-16px, -132px) rotate(-19deg); }
+  .gate.opening .box-body,
+  .gate.opening .box-ribbon { transform: translateY(6px); opacity: 0.9; }
+  @media (max-width: 430px) { .gate-art { --gs: 1.5; } }
   .gate-word {
     font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
     font-size: 11px;
@@ -1316,20 +1324,13 @@
 
 <div class="gate" id="gate">
   <button class="gate-box" id="gatebox" type="button" aria-label="Open the card">
-    <svg class="giftsvg" viewBox="0 0 320 300" role="img" aria-hidden="true">
-      <ellipse cx="160" cy="268" rx="104" ry="13" fill="rgba(0,0,0,0.10)"/>
-      <g class="g-body">
-        <rect x="52" y="120" width="216" height="140" rx="8" fill="#C8251C"/>
-        <rect x="146" y="120" width="28" height="140" fill="#F5F1E8"/>
-      </g>
-      <g class="g-lid">
-        <rect x="36" y="86" width="248" height="46" rx="8" fill="#A81E16"/>
-        <rect x="36" y="100" width="248" height="16" fill="#F5F1E8"/>
-        <ellipse cx="134" cy="62" rx="42" ry="24" transform="rotate(-24 134 62)" fill="#F5F1E8"/>
-        <ellipse cx="186" cy="62" rx="42" ry="24" transform="rotate(24 186 62)" fill="#F5F1E8"/>
-        <circle cx="160" cy="78" r="14" fill="#FFFFFF"/>
-      </g>
-    </svg>
+    <span class="gate-art" aria-hidden="true">
+      <span class="box-art">
+        <span class="box-body"></span>
+        <span class="box-ribbon"></span>
+        <span class="box-lid"><span class="bow"><svg viewBox="0 0 88 46" aria-hidden="true"><path class="tail" d="M41 32c-7 6-12 10-19 13l8-12z"/><path class="tail" d="M47 32c7 6 12 10 19 13l-8-12z"/><path class="loop" d="M44 28C31 6 7 8 10 22c2 10 21 11 34 6z"/><path class="loop" d="M44 28C57 6 81 8 78 22c-2 10-21 11-34 6z"/><ellipse class="knot" cx="44" cy="28" rx="7.5" ry="6.5"/></svg></span></span>
+      </span>
+    </span>
     <span class="gate-word">Open it</span>
   </button>
 </div>
