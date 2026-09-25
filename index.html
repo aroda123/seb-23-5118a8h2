@@ -156,43 +156,43 @@
     padding: var(--m);
     background:
       /* mitre joints: a hairline from each outer corner to its inner corner */
-      linear-gradient(45deg, transparent calc(50% - 0.7px), rgba(74,50,13,0.55) calc(50% - 0.7px),
-        rgba(74,50,13,0.55) calc(50% + 0.7px), transparent calc(50% + 0.7px))
+      linear-gradient(45deg, transparent calc(50% - 0.7px), rgba(94,38,6,0.55) calc(50% - 0.7px),
+        rgba(94,38,6,0.55) calc(50% + 0.7px), transparent calc(50% + 0.7px))
         left top / var(--m) var(--m) no-repeat,
-      linear-gradient(135deg, transparent calc(50% - 0.7px), rgba(74,50,13,0.55) calc(50% - 0.7px),
-        rgba(74,50,13,0.55) calc(50% + 0.7px), transparent calc(50% + 0.7px))
+      linear-gradient(135deg, transparent calc(50% - 0.7px), rgba(94,38,6,0.55) calc(50% - 0.7px),
+        rgba(94,38,6,0.55) calc(50% + 0.7px), transparent calc(50% + 0.7px))
         right top / var(--m) var(--m) no-repeat,
-      linear-gradient(45deg, transparent calc(50% - 0.7px), rgba(74,50,13,0.55) calc(50% - 0.7px),
-        rgba(74,50,13,0.55) calc(50% + 0.7px), transparent calc(50% + 0.7px))
+      linear-gradient(45deg, transparent calc(50% - 0.7px), rgba(94,38,6,0.55) calc(50% - 0.7px),
+        rgba(94,38,6,0.55) calc(50% + 0.7px), transparent calc(50% + 0.7px))
         right bottom / var(--m) var(--m) no-repeat,
-      linear-gradient(135deg, transparent calc(50% - 0.7px), rgba(74,50,13,0.55) calc(50% - 0.7px),
-        rgba(74,50,13,0.55) calc(50% + 0.7px), transparent calc(50% + 0.7px))
+      linear-gradient(135deg, transparent calc(50% - 0.7px), rgba(94,38,6,0.55) calc(50% - 0.7px),
+        rgba(94,38,6,0.55) calc(50% + 0.7px), transparent calc(50% + 0.7px))
         left bottom / var(--m) var(--m) no-repeat,
       /* grain in the gilding */
       repeating-linear-gradient(101deg,
-        rgba(255,252,236,0.05) 0 1px,
-        rgba(58,38,8,0.045) 1px 2px,
+        rgba(255,241,226,0.06) 0 1px,
+        rgba(92,36,6,0.05) 1px 2px,
         rgba(0,0,0,0) 2px 4px),
       /* gold leaf over wood, light falling from the top left */
       linear-gradient(142deg,
-        #f4e3b0 0%,
-        #ddb75f 14%,
-        #bb8f37 30%,
-        #956b21 47%,
-        #b9893a 62%,
-        #d7ae54 78%,
-        #8a6220 100%);
+        #FFE3C4 0%,
+        #F4A961 14%,
+        #DF7E27 30%,
+        #B3560F 47%,
+        #DA7B29 62%,
+        #EF9D49 78%,
+        #9A4A0D 100%);
     box-shadow:
       /* outer arris: a thin catch-light, a thin dark edge */
-      inset 0 1px 0 rgba(255,250,224,0.75),
-      inset 1px 0 0 rgba(255,250,224,0.45),
-      inset -1px 0 0 rgba(66,44,12,0.52),
-      inset 0 -1px 0 rgba(66,44,12,0.64),
+      inset 0 1px 0 rgba(255,237,216,0.75),
+      inset 1px 0 0 rgba(255,237,216,0.45),
+      inset -1px 0 0 rgba(96,40,8,0.52),
+      inset 0 -1px 0 rgba(96,40,8,0.64),
       /* roundover of the moulding, lit from the top left */
-      inset 0 5px 8px -4px rgba(255,248,214,0.68),
-      inset 5px 0 8px -4px rgba(255,248,214,0.42),
-      inset -5px 0 9px -4px rgba(62,41,10,0.46),
-      inset 0 -6px 10px -4px rgba(62,41,10,0.62),
+      inset 0 5px 8px -4px rgba(255,236,212,0.68),
+      inset 5px 0 8px -4px rgba(255,236,212,0.42),
+      inset -5px 0 9px -4px rgba(94,38,8,0.46),
+      inset 0 -6px 10px -4px rgba(94,38,8,0.62),
       /* the frame sitting on the paper */
       0 2px 3px rgba(0,0,0,0.20),
       0 26px 54px rgba(0,0,0,0.30);
@@ -203,10 +203,10 @@
     position: absolute;
     inset: var(--g);
     pointer-events: none;
-    border-top: 1px solid rgba(70,47,12,0.58);
-    border-left: 1px solid rgba(70,47,12,0.48);
-    border-right: 1px solid rgba(255,248,214,0.42);
-    border-bottom: 1px solid rgba(255,248,214,0.55);
+    border-top: 1px solid rgba(98,40,8,0.58);
+    border-left: 1px solid rgba(98,40,8,0.48);
+    border-right: 1px solid rgba(255,236,212,0.42);
+    border-bottom: 1px solid rgba(255,236,212,0.55);
   }
   .frame-mat {
     position: relative;
@@ -214,8 +214,8 @@
     background: linear-gradient(158deg, #fbf7ec 0%, #eee7d6 100%);
     box-shadow:
       /* gold fillet round the mat, then the mat's own bevel */
-      0 0 0 1px rgba(122,90,32,0.66),
-      inset 0 1px 3px rgba(74,56,24,0.18);
+      0 0 0 1px rgba(170,74,16,0.72),
+      inset 0 1px 3px rgba(98,52,20,0.20);
   }
   .hero img {
     display: block;
