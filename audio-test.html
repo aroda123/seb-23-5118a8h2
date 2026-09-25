@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Audio test</title>
+<style>
+ body{font:15px -apple-system,system-ui,sans-serif;margin:0;padding:18px;background:#111;color:#eee}
+ h1{font-size:15px;letter-spacing:.1em;text-transform:uppercase;margin:0 0 4px}
+ p{color:#999;font-size:13px;margin:0 0 16px;line-height:1.5}
+ button{display:block;width:100%;font:inherit;font-size:17px;padding:20px;margin:0 0 12px;
+        border:0;border-radius:12px;background:#2b6fd6;color:#fff}
+ button.alt{background:#3a3a3a}
+ #log{white-space:pre-wrap;font:12px ui-monospace,Menlo,monospace;background:#000;
+      border:1px solid #333;border-radius:10px;padding:12px;margin-top:14px;color:#8f8}
+ .warn{color:#fc6}
+</style></head><body>
+<h1>Audio test</h1>
+<p><span class="warn">First: check the side switch on your iPhone is NOT on silent.</span>
+Web audio obeys that switch even when videos do not.</p>
+
+<button id="beep">1 &mdash; Play a plain beep</button>
+<button id="tune" class="alt">2 &mdash; Play the card's music</button>
+<button id="clear" class="alt">Clear log</button>
+<div id="log">ready…</div>
+
+<script>
+var L = document.getElementById('log');
+function log(){ L.textContent += '\n' + Array.prototype.join.call(arguments,' '); }
+log('UA:', navigator.userAgent.slice(0,60));
+log('AudioContext:', !!(window.AudioContext||window.webkitAudioContext));
+if (navigator.userActivation) log('userActivation.hasBeenActive:', navigator.userActivation.hasBeenActive);
+
+var ctx = null;
+function ensure(){
+  if (!ctx) {
+    var AC = window.AudioContext||window.webkitAudioContext;
+    ctx = new AC();
+    log('created ctx, state =', ctx.state, 'rate =', ctx.sampleRate);
+  }
+  return ctx;
+}
+function unlock(){
+  try{ var b=ctx.createBuffer(1,1,22050), s=ctx.createBufferSource();
+       s.buffer=b; s.connect(ctx.destination); s.start(0); log('unlock sample fired'); }
+  catch(e){ log('unlock FAILED:', e.message); }
+}
+
+document.getElementById('beep').addEventListener('click', function(){
+  ensure(); log('--- beep pressed, state =', ctx.state);
+  unlock();
+  var done = function(){
+    log('after resume, state =', ctx.state);
+    var o = ctx.createOscillator(), g = ctx.createGain();
+    o.type='sine'; o.frequency.value=440;
+    g.gain.setValueAtTime(0.0001, ctx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.25, ctx.currentTime+0.02);
+    g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime+1.0);
+    o.connect(g); g.connect(ctx.destination);
+    o.start(); o.stop(ctx.currentTime+1.1);
+    log('beep scheduled at t =', ctx.currentTime.toFixed(2));
+    setTimeout(function(){ log('1s later, ctx time =', ctx.currentTime.toFixed(2),
+      ctx.currentTime > 0.5 ? '(clock IS running)' : '(clock STUCK)'); }, 1000);
+  };
+  if (ctx.state === 'suspended') {
+    var p = ctx.resume();
+    if (p && p.then) p.then(done)['catch'](function(e){ log('resume REJECTED:', e.message); });
+    else done();
+  } else done();
+});
+
+document.getElementById('tune').addEventListener('click', function(){
+  if (!window.__cardMusic) { log('card engine not loaded here'); return; }
+  window.__cardMusic.start();
+  setTimeout(function(){
+    log('engine: isPlaying =', window.__cardMusic.isPlaying(),
+        ' running =', window.__cardMusic.running());
+  }, 600);
+});
+document.getElementById('clear').addEventListener('click', function(){ L.textContent='ready…'; });
+</script>
+<script src="music.js"></script>
+</body></html>
