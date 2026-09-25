@@ -1522,6 +1522,81 @@
     var out = document.getElementById('giftout');
     var tag = document.getElementById('gifttag');
     if (!btn || !out || !tag) return;
+
+    /* A small flourish when the lid comes off: an original rising figure,
+       synthesised here like everything else, so there is no file to load
+       and nothing to go missing. Opening the box IS the interaction, so
+       the browser lets it sound. */
+    function surprise() {
+      var AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return;
+      var ctx;
+      try { ctx = new AC(); } catch (e) { return; }
+
+      var out = ctx.createGain();
+      out.gain.value = 0.30;
+      out.connect(ctx.destination);
+
+      /* a short bright room */
+      var len = Math.floor(ctx.sampleRate * 1.1);
+      var buf = ctx.createBuffer(2, len, ctx.sampleRate);
+      for (var c = 0; c < 2; c++) {
+        var d = buf.getChannelData(c);
+        for (var i = 0; i < len; i++) {
+          d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 3.2);
+        }
+      }
+      var verb = ctx.createConvolver();
+      verb.buffer = buf;
+      var wet = ctx.createGain();
+      wet.gain.value = 0.34;
+      wet.connect(verb);
+      verb.connect(out);
+
+      /* a struck bell: a triangle with a quiet octave-and-a-bit above it */
+      function bell(freq, at, dur, level) {
+        var g = ctx.createGain();
+        g.gain.setValueAtTime(0.0001, at);
+        g.gain.exponentialRampToValueAtTime(level, at + 0.008);
+        g.gain.exponentialRampToValueAtTime(0.0001, at + dur);
+        g.connect(out);
+        g.connect(wet);
+
+        var o = ctx.createOscillator();
+        o.type = 'triangle';
+        o.frequency.value = freq;
+        o.connect(g);
+        o.start(at);
+        o.stop(at + dur + 0.05);
+
+        var h = ctx.createOscillator();
+        h.type = 'sine';
+        h.frequency.value = freq * 2.01;
+        var hg = ctx.createGain();
+        hg.gain.value = 0.26;
+        h.connect(hg);
+        hg.connect(g);
+        h.start(at);
+        h.stop(at + dur + 0.05);
+      }
+
+      var t = ctx.currentTime + 0.02;
+      /* up the chord, then the whole thing ringing together */
+      [587.33, 739.99, 880.00, 1174.66].forEach(function (f, i) {
+        bell(f, t + i * 0.085, 0.95 - i * 0.07, 0.50);
+      });
+      [1174.66, 1479.98, 1760.00].forEach(function (f) {
+        bell(f, t + 0.40, 1.6, 0.20);
+      });
+
+      /* stand aside if the card's own music happens to be playing */
+      if (window.__cardMusic && window.__cardMusic.isPlaying()) {
+        window.__cardMusic.duck();
+        setTimeout(function () { window.__cardMusic.unduck(); }, 2200);
+      }
+      setTimeout(function () { try { ctx.close(); } catch (e) {} }, 3200);
+    }
+
     btn.addEventListener('click', function () {
       var open = btn.getAttribute('aria-expanded') === 'true';
       if (open) {
@@ -1534,6 +1609,7 @@
         out.hidden = false;
         requestAnimationFrame(function () { out.classList.add('reveal'); });
         tag.textContent = 'Happy birthday';
+        surprise();
       }
     });
   })();
