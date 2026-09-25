@@ -764,6 +764,40 @@
     box-shadow: 0 2px 14px rgba(0, 0, 0, 0.10);
     transition: opacity 0.25s ease, box-shadow 0.2s ease;
   }
+  .tapcue {
+    position: fixed;
+    left: 50%;
+    bottom: 22px;
+    transform: translateX(-50%);
+    z-index: 60;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 11px 18px;
+    border-radius: 999px;
+    border: 1px solid var(--orange);
+    background: var(--paper-lift);
+    color: var(--ink);
+    font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    box-shadow: 0 3px 18px rgba(0, 0, 0, 0.16);
+    animation: tapcue 2.6s ease-in-out infinite;
+    cursor: pointer;
+  }
+  .tapcue span {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 20px; height: 20px; border-radius: 50%;
+    background: var(--orange); color: #fff; font-size: 9px;
+  }
+  @keyframes tapcue {
+    0%, 100% { box-shadow: 0 3px 18px rgba(0,0,0,0.16); }
+    50%      { box-shadow: 0 3px 18px rgba(0,0,0,0.16), 0 0 0 7px rgba(210,117,28,0.16); }
+  }
+  .tapcue.gone { display: none; }
+  @media (prefers-reduced-motion: reduce) { .tapcue { animation: none; } }
+
   /* until something has started it, the button quietly asks */
   .music.waiting {
     border-color: var(--orange);
@@ -1273,6 +1307,10 @@
 
 </div>
 
+<button class="tapcue" id="tapcue" type="button">
+  <span aria-hidden="true">&#9654;</span> Tap anywhere for music
+</button>
+
 <button class="music" id="music" type="button" aria-pressed="false" aria-label="Play music">
   <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
   <span class="label-off">Music</span>
@@ -1459,16 +1497,20 @@
     function release() {
       EVENTS.forEach(function (e) { window.removeEventListener(e, attempt, true); });
     }
+    var cue = document.getElementById('tapcue');
+    if (cue) cue.addEventListener('click', function () { attempt(); });
+
     function attempt() {
       if (started) return;
       m.start();
       setTimeout(function () {
-        if (m.running()) {
+        if (m.running() && m.isPlaying()) {
           started = true;
           release();
           if (btn) btn.classList.remove('waiting');
+          if (cue) cue.classList.add('gone');
         }
-      }, 160);
+      }, 200);
     }
     EVENTS.forEach(function (e) {
       window.addEventListener(e, attempt, { capture: true, passive: true });
